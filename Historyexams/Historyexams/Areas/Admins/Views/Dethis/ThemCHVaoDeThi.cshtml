@@ -1,0 +1,99 @@
+﻿@model IList<Historyexams.ModelViews.CauHoiViewModel>
+@{
+	ViewData["Title"] = "ThemCHVaoDeThi";
+	Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="row pt-4 pl-5">
+	
+
+		<div class="col-md-3 col-sm-6 col-12">
+			<div class="info-box">
+				<div class="info-box-content">
+					<span class="info-box-text">Mức độ</span>
+					<p>@ViewBag.Tenmd</p>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		<div class="col-md-3 col-sm-6 col-12">
+			<div class="info-box">
+				<div class="info-box-content">
+					<span class="info-box-text">chương</span>
+					<p>@ViewBag.Tenchuong</p>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+	</div>
+
+
+<div class="row pt-4 pl-4">
+	<form asp-controller="Dethis" asp-action="ThemCHVaoDeThi" method="post">
+
+		<input type="hidden" name="Idmucdo" value="@ViewBag.Idmucdo" />
+		<input type="hidden" name="Idchuong" value="@ViewBag.Idchuong" />
+		<input type="hidden" name="idDethi" value="@ViewBag.IdDethi" />
+		<div class="row">
+			<div></div>
+		</div>
+		<div class="card-body">
+			<table class="table table-bordered  ">
+				<thead>
+					<tr>
+						<th style="width: 10px">Chọn</th>
+						<th>Mã câu hỏi</th>
+						<th>Câu hỏi</th>
+						<th></th>
+
+					</tr>
+				</thead>
+				<tbody>
+					@if (Model != null && Model.Any())
+					{
+						@for (int i = 0; i < Model.Count(); i++)
+						{
+							<tr onclick="toggleCheckbox(this)">
+								<input type="hidden" name="idDethi" value="@ViewBag.IdDethi" />
+								<input type="hidden" asp-for="@Model[i].Id" />
+								<input type="hidden" asp-for="@Model[i].Macauhoi" />
+								<td><input type="checkbox" class="cbkItem" asp-for="@Model[i].IsChecked" /></td>
+								<td>
+									@Model[i].Macauhoi
+								</td>
+								<td>
+									@Model[i].Noidung
+								</td>
+							</tr>
+
+						}
+					}
+				</tbody>
+			</table>
+			<button type="submit" class="btn btn-default mr-1">Lưu</button>
+			<a href="javascript:history.go(-1);">Quay lại</a>
+		</div>
+	</form>
+</div>
+
+
+<style>
+	table.table.table-bordered {
+		background-color: white;
+	}
+
+</style>
+
+<script>
+	function toggleCheckbox(element) {
+		var checkbox = element.querySelector('input[type="checkbox"]');
+		if (checkbox) {
+			checkbox.checked = !checkbox.checked;
+		}
+	}
+</script>

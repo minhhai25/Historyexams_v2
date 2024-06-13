@@ -1,0 +1,77 @@
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<Historyexams.Models.Baitest>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="site-header d-flex flex-column justify-content-center align-items-center" style="padding: 80px;">
+	<div class="container">
+		<div class="row align-items-center">
+
+			<div class="col-lg-5 col-12">
+				<h2 class="text-white">
+					Bài thi
+				</h2>
+			</div>
+
+		</div>
+	</div>
+</header>
+
+
+<section class="section-padding">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-12 col-12 text-center">
+				<h3 class="mb-4">Hãy chọn bài thi nào !</h3>
+			</div>
+
+			<div class="col-lg-8 col-12 mt-3 mx-auto">
+				@foreach (var item in Model)
+				{
+					<div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+						<div class="d-flex">
+							<img src="LayoutUser/images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+
+							<div class="custom-block-topics-listing-info d-flex">
+								<div>
+									<h5 class="mb-2">@item.Tenbaitest</h5>
+
+									<p class="mb-0">@item.Mota</p>
+
+									<a asp-action="ChonDeThi" asp-controller="Baitest" asp-route-id="@item.Id" class="btn custom-btn mt-3 mt-lg-4">Chọn đề </a>
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+
+			</div>
+			<div class="col-lg-12 col-12">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center mb-0">
+						@*  <li class="page-item">
+						<a class="page-link" href="#" aria-label="Previous">
+						<span aria-hidden="true">Prev</span>
+						</a>
+						</li> *@
+
+						@Html.PagedListPager(Model, page => Url.Action("index", new { page = page }), new PagedListRenderOptions
+ {
+	 LiElementClasses = new string[] { "page-item " },
+	 PageClasses = new string[] { "page-link" }
+ })
+						@* <li class="page-item">
+						<a class="page-link" href="#" aria-label="Next">
+						<span aria-hidden="true">Next</span>
+						</a>
+						</li>*@
+					</ul>
+				</nav>
+			</div>
+
+		</div>
+	</div>
+</section>

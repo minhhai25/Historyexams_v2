@@ -1,0 +1,140 @@
+﻿@model Historyexams.Models.Cauhoi
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Tạo câu hỏi ";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thêm mới câu hỏi</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="card">
+   @*      <div class="card-header">
+        </div> *@
+
+        <div class="bs-stepper-content card-body">
+            @using (Html.BeginForm("Create", "Cauhois", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false)
+
+                <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div class="form-group">
+                        <label for="">Mã câu hỏi</label>
+                        @Html.TextBoxFor(x => x.Macauhoi, new { @class = "form-control", @plachilder = "Tên danh mục" })
+                        @Html.ValidationMessageFor(x => x.Macauhoi, null, new { @class = "text-danger" })
+                    </div>
+
+                    <div class="row">
+                       @*  <div class="form-group col-md-6">
+                            <label class="control-label">Mức độ</label>
+                            <select class="form-control" asp-items="ViewBag.Tenmd"></select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label">chương</label>
+                            <select class="form-control" asp-items="ViewBag.Tenchuong"></select>
+                        </div> *@
+                        <div class="form-group col-md-6">
+                            <select class="custom-select" id="Idmucdo" name="Idmucdo" style="min-width: 180px;" asp-items="ViewBag.Tenmd">
+                                <option value="" disabled selected>Mức độ</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select class="custom-select" id="Idchuong" name="Idchuong" style="min-width: 180px;" asp-items="ViewBag.Tenchuong">
+                                <option value="" disabled selected>Tên chương</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+						<label for="">Nội dung câu hỏi</label>
+                        @Html.TextAreaFor(x => x.Noidung, new { @class = "form-control" })
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="">phương án A</label>
+                            @Html.TextAreaFor(x => x.PaA, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="">phương án B</label>
+                            @Html.TextAreaFor(x => x.PaB, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                        <label for="">phương án C</label>
+                        @Html.TextAreaFor(x => x.PaC, new { @class = "form-control" })
+                    </div>
+                        <div class="form-group col-md-6">
+                        <label for="">phương án D</label>
+                        @Html.TextAreaFor(x => x.PaD, new { @class = "form-control" })
+                    </div>
+                    </div>
+                    @* <div class="form-group">
+                        <label for="">phương án đúng</label>
+                        @Html.TextBoxFor(x => x.PaDung, new { @class = "form-control" })
+                    </div> *@
+                    <div class="form-group col-md-6">
+                        <label for="">Phương án đúng</label>
+                        <div class="d-flex justify-content-around">
+                            <div class="form-check form-check-inline ">
+                                @Html.RadioButtonFor(x => x.PaDung, "A", new { @class = "form-control", id = "inlineRadio1" })
+                                <label class="form-check-label" for="inlineRadio1">A</label>
+                            </div>
+                            <div class="form-check form-check-inline ">
+                                @Html.RadioButtonFor(x => x.PaDung, "B", new { @class = "form-control", id = "inlineRadio2" })
+                                <label class="form-check-label" for="inlineRadio2">B</label>
+                            </div>
+                            <div class="form-check form-check-inline ">
+                                @Html.RadioButtonFor(x => x.PaDung, "B", new { @class = "form-control", id = "inlineRadio3" })
+                                <label class="form-check-label" for="inlineRadio3">C</label>
+                            </div>
+                            <div class="form-check form-check-inline ">
+                                @Html.RadioButtonFor(x => x.PaDung, "B", new { @class = "form-control", id = "inlineRadio4" })
+                                <label class="form-check-label" for="inlineRadio4">D</label>
+                            </div>
+                        </div>
+                    </div>
+                  
+
+                  @*   <div class="form-group">
+                        <label for="">Người tạo</label>
+                        @Html.TextBoxFor(x => x.Nguoitao, new { @class = "form-control" })
+                    </div> *@
+                    <div class="form-group">
+                        <label for="">Hiển thị</label>
+                        @Html.CheckBoxFor(x => x.Isactive)
+                        @Html.ValidationMessageFor(x => x.Isactive, "", new { @class = "text-danger" })
+                    </div>
+                    @* <div class="form-group">
+                        <label for="Nguoitao"> Isdelete</label>
+                        @Html.TextBoxFor(x => x.Nguoitao, new { @class = "form-control" })
+                    </div> *@
+
+                    <div class="form-group">
+                        <a asp-action="Index" class="btn btn-danger">Quay lại</a>
+                        <input type="submit" value=" Create" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+            <!-- /.card -->
+        </div>
+    </div>
+</section>

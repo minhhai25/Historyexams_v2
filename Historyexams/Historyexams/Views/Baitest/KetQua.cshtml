@@ -1,0 +1,49 @@
+﻿@model Historyexams.ModelViews.DethiLichSu
+@{
+   
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header class="site-header d-flex flex-column justify-content-center align-items-center" style=" padding:40px">
+</header>
+@* <a class="btn btn-secondary">Thoát</a> *@
+<section class=" " style="display:flex; justify-content:center; margin-top:50px;" >
+   
+<div class="col-lg-6 col-md-6 col-12">
+    <div class="custom-block bg-white shadow-lg">
+        
+            <div class="" style="text-align:center;">
+               
+                    <h1 class="mb-2">Điểm</h1><br/>
+
+                    <p style="font-size:30px">@ViewBag.TyLeDung</p>
+
+                    @* <a asp-action="XemLai" asp-route-iddethi="@Model.dethi.Id" asp-route-lan="@Model.tkde.Lan">Xem</a> *@
+               
+            </div>
+                <img src="~/LayoutUser/images/topics/undraw_Graduation_re_gthn.png" class="custom-block-image img-fluid" alt="" />
+    </div>
+</div>
+</section>
+<style>
+    .d-flex {
+        display: flex !important;
+        text-align: center;
+        justify-content: center;
+    }
+</style>
+@* <script>
+    document.querySelector('.btn-secondary').addEventListener('click', function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: "Bạn có muốn thoát không?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Có",
+            cancelButtonText: "Không",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.history.back();
+            }
+        });
+    });
+</script> *@

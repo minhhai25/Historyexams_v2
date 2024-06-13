@@ -1,0 +1,104 @@
+﻿@model Historyexams.Models.Taikhoan
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Tạo Tài khoản ";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thêm mới tài khoản</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="card">
+      
+
+        <div class="bs-stepper-content card-body">
+            @using (Html.BeginForm("Create", "Taikhoans", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false)
+
+                <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label >Mã tài khoản</label>
+                            @Html.TextBoxFor(x => x.Mataikhoan, new { @class = "form-control", @plachilder = "Tên danh mục" })
+                            @Html.ValidationMessageFor(x => x.Mataikhoan, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label >Mật khẩu</label>
+                            @Html.TextBoxFor(x => x.Matkhau, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Họ tên</label>
+                        @Html.TextBoxFor(x => x.Hoten, new { @class = "form-control" })
+                    </div>
+                   
+
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                    </div>
+                    <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="">Số điện thoại</label>
+                        @Html.TextBoxFor(x => x.Dienthoai, new { @class = "form-control" })
+                    </div>
+                        <div class="form-group col-md-6">
+                        <label for="">Giới tính</label>
+                        <div>
+                                <div class="form-check form-check-inline ">
+                                    @Html.RadioButtonFor(x => x.Gioitinh, "Nam", new { @class = "form-control", id = "inlineRadio1" })
+                                    <label class="form-check-label" for="inlineRadio1">Nam</label>
+                                </div>
+
+                                <div class="form-check form-check-inline ">
+                                    @Html.RadioButtonFor(x => x.Gioitinh, "Nữ", new { @class = "form-control", id = "inlineRadio2" })
+                                    <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                                </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Địa chỉ</label>
+                        @Html.TextBoxFor(x => x.Diachi, new { @class = "form-control" })
+                    </div>
+
+                   
+                    <div class="form-group">
+                        <label for="">Hiển thị</label>
+                        @Html.CheckBoxFor(x => x.Isactive)
+                        @Html.ValidationMessageFor(x => x.Isactive, "", new { @class = "text-danger" })
+                    </div>
+                  @*   <div class="form-group">
+                        <label for="exampleInputEmail1"> Isdelete</label>
+                        @Html.TextBoxFor(x => x.Nguoitao, new { @class = "form-control" })
+                    </div> *@
+
+                    <div class="form-group">
+                        <a asp-action="Create" class="btn btn-danger">Quay lại</a>
+                        <input type="submit" value=" Create" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+            <!-- /.card -->
+        </div>
+    </div>
+</section>

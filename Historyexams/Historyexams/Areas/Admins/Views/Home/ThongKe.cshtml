@@ -1,0 +1,117 @@
+﻿<div class="container">
+	<div class="row pt-5">
+		<div class="col-lg-4 col-6">
+			<!-- small box -->
+			<div class="small-box bg-info">
+				<div class="inner">
+					<h3>@ViewBag.socau</h3>
+
+					<p>Số câu hỏi</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-bag"></i>
+				</div>
+
+			</div>
+		</div>
+		<!-- ./col -->
+		<div class="col-lg-4 col-6">
+			<!-- small box -->
+			<div class="small-box bg-success">
+				<div class="inner">
+					<h3>@ViewBag.sode</h3>
+
+					<p>Số đề thi</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-stats-bars"></i>
+				</div>
+
+			</div>
+		</div>
+		<!-- ./col -->
+		<div class="col-lg-4 col-6">
+			<!-- small box -->
+			<div class="small-box bg-warning">
+				<div class="inner">
+					<h3>@ViewBag.soluot</h3>
+
+					<p>số lượt thi</p>
+				</div>
+				<div class="icon">
+					<i class="ion ion-person-add"></i>
+				</div>
+
+			</div>
+		</div>
+		<!-- ./col -->
+
+	</div>
+	<div class="card card-danger">
+		<div class="card-header">
+			<h3 class="card-title">Lượt làm bài test</h3>
+
+			<div class="card-tools">
+				<button type="button" class="btn btn-tool" data-card-widget="collapse">
+					<i class="fas fa-minus"></i>
+				</button>
+				<button type="button" class="btn btn-tool" data-card-widget="remove">
+					<i class="fas fa-times"></i>
+				</button>
+			</div>
+		</div>
+		<div class="card-body">
+			<div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+			<canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 572px;" width="715" height="312" class="chartjs-render-monitor"></canvas>
+		</div>
+		<!-- /.card-body -->
+	</div>
+</div>
+@section scripts {
+	<script src="~/LayoutAdmin/plugins/jquery/jquery.min.js"></script>
+
+	<script src="~/LayoutAdmin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<script src="~/LayoutAdmin/plugins/chart.js/Chart.min.js"></script>
+	
+	<script src="~/LayoutAdmin/dist/js/adminlte.min.js"></script>
+	
+
+	<script>
+		$(function () {
+			
+			var donutChartCanvas = $('#donutChart').get(0).getContext('2d');
+
+			var labels = [];
+			var data = [];
+
+		@foreach (var item in ViewBag.Luottheobai)
+		{
+			<text>
+					labels.push('@Html.Raw(System.Text.Encodings.Web.JavaScriptEncoder.Default.Encode(item.Tenbaitest))');
+				data.push(@item.Soluotthi);
+			</text>
+		}
+
+				var donutData = {
+				labels: labels,
+				datasets: [
+					{
+						data: data,
+						backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+					}
+				]
+			}
+			var donutOptions = {
+				maintainAspectRatio: false,
+				responsive: true,
+			}
+
+			new Chart(donutChartCanvas, {
+				type: 'doughnut',
+				data: donutData,
+				options: donutOptions
+			})
+		})
+	</script>
+}

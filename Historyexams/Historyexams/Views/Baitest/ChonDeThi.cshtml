@@ -1,0 +1,141 @@
+﻿@model IEnumerable<Historyexams.ModelViews.DethiLichSu>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	ViewData["Title"] = "Chọn đề thi";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="site-header d-flex flex-column justify-content-center align-items-center" style="padding: 80px;">
+	<div class="container">
+		<div class="row align-items-center">
+
+			<div class="col-lg-5 col-12">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a asp-action="index" asp-controller="Baitest">Bài thi</a></li>
+
+						<li class="breadcrumb-item active" aria-current="page"> Đề thi</li>
+					</ol>
+				</nav>
+
+				<h2 class="text-white">Đề thi</h2>
+			</div>
+
+		</div>
+	</div>
+</header>
+
+
+<section class="section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-12 text-center">
+				<h3 class="mb-4">Hãy chọn đề thi !</h3>
+			</div>
+
+			<div class="col-lg-12 col-12 mt-3 mx-auto">
+				@foreach (var item in Model)
+				{
+					<div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+						<div class="d-flex justify-content-between align-items-center">
+							<img src="~/LayoutUser/images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+
+							<div class="custom-block-topics-listing-info d-flex">
+								<div>
+									<h5 class="mb-2">@item.dethi.Tendethi</h5>
+
+									<p class="mb-0">@item.dethi.Mota</p>
+
+									<a asp-action="LamBaiThi" asp-controller="Baitest" asp-route-id="@item.dethi.Id" class="btn custom-btn mt-3 mt-lg-4">Làm bài</a>
+								</div>
+
+							</div>
+							<div class="col-md-7">
+								<table class="table table-hover table-bordered w-100">
+									<thead>
+										<tr>
+											<th>
+												Lần thi
+											</th>
+											<th>
+												Tỷ lệ
+											</th>
+											<th>
+												Ngày thi
+											</th>
+											<th>
+												Xem lại
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										@foreach (var tkdt in item.tkde)
+										{
+											<tr id="trow_@tkdt.Id">
+												<td>
+													@tkdt.Lan
+												</td>
+												<td>
+													@tkdt.Tyle
+												</td>
+												<td>
+													@tkdt.Ngaythi
+												</td>
+												<td>
+													<a asp-action="XemLai" asp-route-idtkdt="@tkdt.Id" asp-route-iddethi="@tkdt.Iddethi" asp-route-lan="@tkdt.Lan">Xem</a>
+												</td>
+											</tr>
+										}
+										
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</div>
+				}
+
+			</div>
+		@* 	<div class="col-lg-12 col-12">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination justify-content-center mb-0">
+						<li class="page-item">
+							<a class="page-link" href="#" aria-label="Previous">
+								<span aria-hidden="true">Prev</span>
+							</a>
+						</li>
+
+						<li class="page-item active" aria-current="page">
+							<a class="page-link" href="#">1</a>
+						</li>
+
+						<li class="page-item">
+							<a class="page-link" href="#">2</a>
+						</li>
+
+						<li class="page-item">
+							<a class="page-link" href="#">3</a>
+						</li>
+
+						<li class="page-item">
+							<a class="page-link" href="#">4</a>
+						</li>
+
+						<li class="page-item">
+							<a class="page-link" href="#">5</a>
+						</li>
+
+						<li class="page-item">
+							<a class="page-link" href="#" aria-label="Next">
+								<span aria-hidden="true">Next</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div> *@
+
+		</div>
+	</div>
+</section>
+
+

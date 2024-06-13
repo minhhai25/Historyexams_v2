@@ -1,0 +1,280 @@
+﻿@model IEnumerable< Historyexams.Models.Cauhoi>
+@using Historyexams.ModelViews;
+<header class="site-header d-flex flex-column justify-content-center align-items-center" style=" padding:40px">
+</header>
+<section class=" container">
+	<div class="d-flex row">
+		<div id="thongtin" class="col-md-3 m-2 pl-2">
+			<div id="countdown" class="text-center p-2 m-2">
+				<h5>Thời gian còn lại</h5>
+				<div id="countdown-timer" class="" style="color:red; font-size:2rem "></div>
+			</div>
+			<div class="p-2 m-2">
+				<h5 class="text-center">Thông tin</h5>
+				<p>Số câu: @ViewBag.Socauhoi </p>
+				<p>Thời gian: @ViewBag.Thoigian phút</p>
+				<p>Họ và tên : @ViewBag.taiKhoanView </p>
+
+			</div>
+			<div class="traloi m-3" style="text-align:center;">
+				<h5>Bảng trả lời</h5>
+				<div class="item row">
+					@for (var j = 1; j <= @ViewBag.Socauhoi; j++)
+					{
+						<div class="col-md-2"><button type="button" class="btn btn-outline-secondary click-scroll" id="question-@(j+1)">@(j)</button></div>
+					}
+				</div>
+			</div>
+			<div class="p-2 m-2 text-center ">
+				<button class="btn btn-success" id="submit-button">Nộp bài</button>
+				<a class="btn btn-secondary">Thoát</a>
+			</div>
+		</div>
+
+		<div class="col-md-8 m-2">
+			@{
+				var i = 1;
+				@foreach (var item in ViewBag.DanhSachCauHoi)
+				{
+					<div class="container ">
+						<div>
+							<h6>Câu @(i++)</h6>
+							<p id="@(i)">
+								@item.Noidung
+							</p>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+
+								<div class="form-check">
+									<input class="form-check-input" value="A" type="radio" data-id="@item.Id" name="Pa[@item.Id]" id="Pa1[@item.Id]" data-question-number="@(i)">
+									<label class="form-check-label" for="Pa1[@item.Id]">
+										A.@item.PaA
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" value="C" data-id="@item.Id" name="Pa[@item.Id]" id="Pa2[@item.Id]" data-question-number="@(i)">
+
+									<label class="form-check-label" for="Pa2[@item.Id]">
+										C.@item.PaC
+									</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-check">
+									<input class="form-check-input" type="radio" value="B" data-id="@item.Id" name="Pa[@item.Id]" id="Pa3[@item.Id]" data-question-number="@(i)">
+									<label class="form-check-label" for="Pa3[@item.Id]">
+										B.@item.PaB
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" value="D" data-id="@item.Id" name="Pa[@item.Id]" id="Pa4[@item.Id]" data-question-number="@(i)">
+									<label class="form-check-label" for="Pa4[@item.Id]">
+										D.@item.PaD
+									</label>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				}
+			}
+		</div>
+	</div>
+</section>
+<script>
+
+	var timeInSeconds = @ViewBag.Thoigian * 60;
+	var deThiId = @ViewBag.deThiId;
+
+	function countdown() {
+		var minutes = Math.floor(timeInSeconds / 60);
+		var seconds = timeInSeconds % 60;
+		// Định dạng thời gian và hiển thị
+		var timerDisplay = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
+		document.getElementById('countdown-timer').innerText = timerDisplay;
+		// Giảm thời gian đi 1 giây
+		timeInSeconds--;
+		// Khi hết thời gian, dừng đồng hồ
+		if (timeInSeconds < 0) {
+			clearInterval(timerInterval);
+			document.getElementById('countdown-timer').innerText = 'Hết thời gian';
+			disableOptions();
+			alert('Hết thời gian hãy nộp bài')
+		}
+	}
+	countdown();
+	var timerInterval = setInterval(countdown, 1000);
+	function disableOptions() {
+
+		document.querySelectorAll('input[type="radio"]').forEach(function (input) {
+			input.disabled = true;
+		});
+
+		document.querySelector('.btn-secondary').disabled = true;
+	}
+
+	document.getElementById('submit-button').addEventListener('click', function () {
+
+		var traLois = [];
+		if (timeInSeconds > 0) {
+			Swal.fire({
+				title: "Bạn có chắc chắn muốn nộp bài không?",
+				icon: "question",
+				showCancelButton: true,
+				confirmButtonText: "Có",
+				cancelButtonText: "Không",
+			}).then((result) => {
+				if (result.isConfirmed) {
+					submitExam();
+				}
+			});
+		} else {
+			submitExam();
+		}
+		function submitExam() {
+
+			function mapPhuongAn(value) {
+				switch (value) {
+					case 'A':
+						return 'A';
+					case 'C':
+						return 'C';
+					case 'B':
+						return 'B';
+					case 'D':
+						return 'D';
+					default:
+						return null;
+				}
+			}
+			document.querySelectorAll('input[type="radio"]:checked').forEach(function (input) {
+
+				var cauHoiId = input.getAttribute("data-id");
+				var phuongAn = mapPhuongAn(input.value);
+
+
+				// if (phuongAn !== null) {
+
+				traLois.push({ deThiId: deThiId, CauHoiId: cauHoiId, PhuongAn: phuongAn });
+				// }else{
+
+				// }
+			});
+
+			//debugger;
+			$.ajax({
+				type: "POST",
+				url: '/Baitest/TraLoi',
+
+				data: {
+					tralois: JSON.stringify(traLois)
+				},
+				dataType: "json",
+
+				success: function (response) {
+					if (response.success) {
+						console.log(response.message);
+
+						Swal.fire({
+							title: "Thông báo",
+							text: response.message,
+							icon: "success"
+						}).then(() => {
+							window.location.href = '/Baitest/KetQua';
+						});
+
+					} else {
+						console.log(response.message);
+					}
+				},
+				error: function (xhr, status, error) {
+					console.log("Error:", error);
+				}
+			});
+
+		}
+	});
+	document.querySelector('.btn-secondary').addEventListener('click', function (e) {
+		e.preventDefault();
+		Swal.fire({
+			title: "Bạn có muốn thoát không?",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonText: "Có",
+			cancelButtonText: "Không",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.history.back();
+			}
+		});
+	});
+	document.querySelectorAll('input[type="radio"]').forEach(function (input) {
+
+		input.addEventListener('change', function () {
+			var questionNumber = input.getAttribute('data-question-number');
+			var button = document.getElementById('question-' + questionNumber);
+			if (button) {
+				button.classList.remove('btn-outline-secondary');
+				button.classList.add('btn-info');
+			}
+		})
+	});
+	// document.querySelectorAll('.click-scroll').forEach(function (button) {
+	// 	button.addEventListener('click', function () {
+
+	// 		var questionNumber = parseInt(button.textContent.trim());
+	// 		var question = document.getElementById('question-' + questionNumber);
+	// 		if (question) {
+	// 			console.log("check")
+	// 			question.scrollIntoView({ behavior: 'smooth' })
+	// 		}
+	// 	})
+	// });
+	document.querySelectorAll('.click-scroll').forEach(function (button) {
+		button.addEventListener('click', function () {
+			var questionNumber = parseInt(button.textContent.trim()); // Lấy số thứ tự của câu hỏi từ nút
+			var question = document.getElementById('question-' + questionNumber);
+			if (question) {
+				question.scrollIntoView({ behavior: 'smooth' });
+
+			}
+		});
+	});
+</script>
+<style>
+	div#sticky-wrapper {
+		pointer-events: none;
+	}
+
+	label.form-check-label {
+		opacity: unset !important;
+	}
+
+	p {
+		color: black !important;
+	}
+
+	#thongtin {
+		position: fixed;
+		top: 70px;
+		z-index: 1;
+	}
+
+	button.btn.btn-outline-secondary, button.btn.btn-info {
+		margin-bottom: 10px;
+		border-radius: 50%;
+		width: 43px;
+	}
+
+	.col-md-8.m-2 {
+		position: absolute;
+		right: 0;
+	}
+
+	.d-flex.row {
+		position: relative;
+		justify-content: flex-start;
+		margin-top: 20px;
+	}
+</style>

@@ -1,0 +1,77 @@
+﻿@model Historyexams.Models.Tkdt
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thêm mới tài khoản đề thi</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+        </div>
+
+        <div class="bs-stepper-content card-body">
+            @using (Html.BeginForm("Edit", "Tkdts", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false)
+
+                <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Idtaikhoan" class="control-label"></label>
+                        <select asp-for="Idtaikhoan" class="form-control" asp-items="ViewBag.Idtaikhoan"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Iddethi" class="control-label"></label>
+                        <select asp-for="Iddethi" class="form-control" asp-items="ViewBag.Iddethi"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Lần thi</label>
+                        @Html.TextAreaFor(x => x.Lan, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Tỷ lệ</label>
+                        @Html.TextBoxFor(x => x.Tyle, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Ngày thi</label>
+                        @Html.TextBoxFor(x => x.Ngaythi, new { @class = "form-control" })
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <a asp-action="Index" class="btn btn-danger">Quay lại</a>
+                        <input type="submit" value=" Lưu" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+            <!-- /.card -->
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

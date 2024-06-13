@@ -1,0 +1,124 @@
+﻿@model Historyexams.Models.Dethi
+
+@{
+    ViewData["Title"] = "Tạo đề thi ";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Thêm mới đề thi</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="card">
+       
+
+        <div class="bs-stepper-content card-body">
+            @using (Html.BeginForm("Create", "Dethis", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false)
+          @*       <input type="hidden" name="Idmucdo" value="@ViewBag.Idmucdo" />
+                <input type="hidden" name="Idchuong" value="@ViewBag.Idchuong" />
+                <input type="hidden" name="Idbaitest" value="@ViewBag.Idbaitest"/> *@
+                <div id="logins-part" class="content active dstepper-block " role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                          @*   <label class="control-label">Mức độ</label>
+                            @Html.DropDownListFor(x => x.Idmucdo, ViewBag.Tenmd as SelectList, "-Chọn mức độ-", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Idmucdo, null, new { @class = "text-danger" }) *@
+                            <select class="custom-select" id="Idmucdo" name="Idmucdo" style="min-width: 180px;" asp-items="ViewBag.Tenmd">
+                                <option value="" disabled selected>Mức độ</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            @* <label class="control-label">Tên chương</label>
+                            @Html.DropDownListFor(x => x.Idchuong, ViewBag.Tenchuong as SelectList, "-Chọn chương-", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Idchuong, null, new { @class = "text-danger" }) *@
+                            <select class="custom-select" id="Idchuong" name="Idchuong" style="min-width: 180px;" asp-items="ViewBag.Tenchuong">
+                                <option value="" disabled selected>Tên chương</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                           @*  <label class="control-label">Tên bài test</label>
+                            @Html.DropDownListFor(x => x.Idbaitest, ViewBag.Tenbaitest as SelectList, "-Chọn bài test-", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Idbaitest, null, new { @class = "text-danger" }) *@
+                            <select class="custom-select" id="Idbaitest" name="Idbaitest" style="min-width: 180px;" asp-items="ViewBag.Tenbaitest">
+                                <option value="" disabled selected>Tên Bài test</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="">Mã đề thi</label>
+                            @Html.TextBoxFor(x => x.Madethi, new { @class = "form-control", @plachilder = "Tên danh mục" })
+                            @Html.ValidationMessageFor(x => x.Madethi, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="exampleInputPassword1">Tên đề thi</label>
+                            @Html.TextBoxFor(x => x.Tendethi, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Mô tả</label>
+                        @Html.TextBoxFor(x => x.Mota, new { @class = "form-control" })
+                    </div>
+
+                    
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="">Thời gian</label>
+                            @Html.TextBoxFor(x => x.Thoigian, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="">Số câu hỏi</label>
+                            @Html.TextBoxFor(x => x.Socauhoi, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+
+                   @*  <div class="form-group">
+                        <label for="">Người tạo</label>
+                        @Html.TextBoxFor(x => x.Nguoitao, new { @class = "form-control" })
+                    </div> *@
+                    <div class="form-group">
+                        <label asp-for="Isactive">Hiển thị</label>
+                        @Html.CheckBoxFor(x => x.Isactive, new { @class = "ml-2" })
+                        @Html.ValidationMessageFor(x => x.Isactive, "", new { @class = "text-danger ml-2" })
+                    </div>
+                 @*    <div class="form-group">
+                        <label for=""> Isdelete</label>
+                        @Html.TextBoxFor(x => x.Nguoitao, new { @class = "form-control" })
+                    </div> *@
+                   
+                </div>
+          
+                <!-- /.card -->
+                <div class="form-group">
+                    <input type="Submit" value="Ghi lại" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-danger">Quay lại</a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

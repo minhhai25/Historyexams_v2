@@ -1,0 +1,48 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<Historyexams.ModelViews.ThongKeViewModel>;
+<section class="hero-section d-flex justify-content-center align-items-center" id="section_1" style="padding-bottom: 50px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-12 mx-auto">
+				<h3 class="text-white text-center">LUYỆN BÀI TẬP - ĐỀ THI chương LỊCH SỬ THI THỬ THPT QUỐC GIA</h3>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div style="text-align:center;margin:20px 0;">
+		<h4 class="">Những bài thi tiêu biểu</h4>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade active show" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
+						<div class="row">
+							@foreach (var item in Model)
+							{
+								<div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+									<div class="custom-block bg-white shadow-lg">
+											<div class="d-flex">
+												<div>
+													<h6 class="mb-2">@item.Tenbaitest</h6>
+													<p class="mb-0">@item.Mota</p>
+
+												<p>Số lượt thi : @item.Soluotthi</p>
+												</div>
+											</div>
+											<img src="~/LayoutUser/images/topics/undraw_online_ad_re_ol62.png" class="custom-block-image img-fluid" alt="">
+										
+									</div>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

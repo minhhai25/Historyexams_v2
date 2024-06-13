@@ -1,0 +1,116 @@
+﻿@model IEnumerable<Historyexams.Models.Dtch>
+
+@{
+    ViewData["Title"] = "Đề Thi - câu hỏi";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Quản lý @ViewBag.Title  </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            @*  <h3 class="card-title" style="margin-top: 0.5rem;"> @ViewBag.Title </h3> *@
+            <div class="row card-tools">
+                <form action="" method="get" class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="keyword">Tìm theo tên loại</label>
+                        <input class="form-control" name="title" id="keyword" placeholder="Nhập tên cần tìm" value="@ViewBag.keyword">
+                    </div>
+                    <button type="submit" class="btn btn-default mr-1"><i class="fas fa-search"></i></button>
+
+                </form>
+                <div>
+                    <a asp-action="Create" class="btn btn-primary">Thêm mới  </a>
+                    <a class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdcauhoiNavigation)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IddethiNavigation)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        var i = 1;
+                        foreach (var item in Model)
+                        {
+                            <tr id="trow_@item.Id">
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdcauhoiNavigation.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IddethiNavigation.Id)
+                                </td>
+
+                                <td class="btn-action">
+                                    <a asp-action="Edit" asp-route-id="@item.Id">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a>|
+                                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-info"></i></a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-regular fa-trash-can"></i></a>
+
+                                </td>
+                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4">Không có bản ghi nào </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @*  <div class="clearfix" style="margin-top: 2rem;">
+            <ul class="pagination pagination-sm m-0 float-right">
+            @Html.PagedListPager(Model, page => Url.Action("index", new { page = page }), new PagedListRenderOptions
+            {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" }
+            })
+            </ul>
+            </div> *@
+        </div>
+    </div>
+</section>
+@section scripts {
+    <script src="~/js/Checkbox.js"></script>
+    <script>
+        var baseUrl = '/admins/dtchs/deleteAll';
+       
+    </script>
+}

@@ -1,0 +1,100 @@
+﻿@model Historyexams.Models.Dethi
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Sửa đề thi</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                    <li class="breadcrumb-item active">Thêm mới</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+        </div>
+
+        <div class="bs-stepper-content card-body">
+            @using (Html.BeginForm("Edit", "Dethis", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false)
+
+                <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Ngaytao" />
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Mức độ</label>
+                            @Html.DropDownListFor(x => x.Idmucdo, ViewBag.Tenmd as SelectList, "-Chọn mức độ-", new { @class = "form-grop" })
+                            @Html.ValidationMessageFor(x => x.Idmucdo, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Tên chương</label>
+                            @Html.DropDownListFor(x => x.Idchuong, ViewBag.Tenchuong as SelectList, "-Chọn chương-", new { @class = "form-grop" })
+                            @Html.ValidationMessageFor(x => x.Idchuong, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label">Tên bài test</label>
+                            @Html.DropDownListFor(x => x.Idbaitest, ViewBag.Tenbaitest as SelectList, "-Chọn bài test-", new { @class = "form-grop" })
+                            @Html.ValidationMessageFor(x => x.Idbaitest, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="">Mã đề thi</label>
+                            @Html.TextBoxFor(x => x.Madethi, new { @class = "form-control", @plachilder = "Tên danh mục" })
+                            @Html.ValidationMessageFor(x => x.Madethi, null, new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="Tendethi">Tên đề thi</label>
+                            @Html.TextBoxFor(x => x.Tendethi, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Mota">Mô tả</label>
+                        @Html.TextBoxFor(x => x.Mota, new { @class = "form-control" })
+                    </div>
+                    <div class="row ">
+                        <div class="form-group col-md-6">
+                            <label for="">Thời gian</label>
+                            @Html.TextBoxFor(x => x.Thoigian, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Số câu hỏi</label>
+                            @Html.TextBoxFor(x => x.Socauhoi, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Hiển thị</label>
+                        @Html.CheckBoxFor(x => x.Isactive)
+                        @Html.ValidationMessageFor(x => x.Isactive, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <a asp-action="Index" class="btn btn-danger">Quay lại</a>
+                        <input type="submit" value=" Lưu" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+            <!-- /.card -->
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

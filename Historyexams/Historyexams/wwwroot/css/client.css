@@ -1,0 +1,32 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  /*background-color:black !important*/
+}
+
+.table-hover {
+    cursor: pointer !important;
+}
+.table-hover:hover td {
+    cursor: pointer !important;
+    background-color: var(--secondary-color);
+}
+section#section_1 {
+    /*background-image: url(../LayoutUser/images/anh-bai-viet-panorama.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}

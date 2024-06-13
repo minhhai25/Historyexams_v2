@@ -1,0 +1,42 @@
+﻿td>a>i{
+    justify-content:space-around,
+}
+.btn-action {
+    width: 8rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important
+}
+td.btn-action {
+    display: flex;
+    justify-content: space-around;
+}
+.btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+dl.row {
+    margin: 5px;
+    padding: 10px;
+}
+
+dt.col-sm-2, dd.col-sm-10 {
+    margin: 10px 0;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+}
+
+.button {
+    margin-left: 6%;
+}
+
+.card-header-between{
+    display:flex;
+    justify-content:space-between;
+    align-items:center
+}

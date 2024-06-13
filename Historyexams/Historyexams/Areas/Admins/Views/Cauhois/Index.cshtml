@@ -1,0 +1,168 @@
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<Historyexams.Models.Cauhoi>
+
+@{
+    ViewData["Title"] = "Câu hỏi";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Quản lý @ViewBag.Title  </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+          
+            <div class="row card-tools">
+                <form action="" method="get" class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="keyword">Tìm theo tên loại</label>
+                        <input class="form-control" name="title" id="keyword" placeholder="Nhập mã cần tìm" value="@ViewBag.keyword">
+                    </div>
+                    <button type="submit" class="btn btn-default mr-1"><i class="fas fa-search"></i></button>
+
+                </form>
+                <div>
+                    <a asp-action="Create" class="btn btn-primary">Thêm mới  </a>
+                    <a class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+
+                        <th>
+                            Mã câu hỏi
+                        </th>
+                        <th>
+                           Nội dung
+                        </th>
+                        <th>
+                           Phương án A
+                        </th>
+                        <th>
+                            Phương án B
+                        </th>
+                        <th>
+                          Phương án C
+                        </th>
+                        <th>
+                           Phương án D
+                        </th>
+                        <th>
+                            Đáp án đúng
+                        </th>
+                       
+                        <th>
+                            IsActive
+                        </th>
+                        
+                        
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+
+                        var i = 1;
+                        foreach (var item in Model)
+                        {
+                            var strCheck = item.Isactive == true ? "<i class='fa fa-check text-success'></i>" :
+                            "<i class='fas fa-times text-danger'></i>"; //kiểm tra xem IsActicve là true hay false
+
+                            <tr id="trow_@item.Id">
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Macauhoi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Noidung)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaB)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaC)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaD)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaDung)
+                                </td>
+                                @* <td>@string.Format("{0:dd/MM/yyy}", item.Ngaytao)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nguoitao)
+                                </td> *@
+                                <td class="text-center">
+                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+                                </td>
+                                
+                                
+                                <td class="btn-action " style="text-align:center; padding-top:20px">
+                                    <a id="edit" asp-action="Edit" asp-route-id="@item.Id">
+                                        <i class="fa-regular fa-pen-to-square"></i>
+                                    </a><br />
+                                    <a id="detail" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-info"></i></a><br />
+                                    <a id="delete" asp-action="Delete" asp-route-id="@item.Id"><i class="fa-regular fa-trash-can"></i></a>
+
+                                </td>
+                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="9">Không có bản ghi nào </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+             <div class="clearfix" style="margin-top: 2rem;">
+            <ul class="pagination pagination-sm m-0 float-right">
+            @Html.PagedListPager(Model, page => Url.Action("index", new { page = page,title=ViewBag.keyword }), new PagedListRenderOptions
+            {
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" }
+            })
+            </ul>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts {
+    <script src="~/js/Checkbox.js"></script>
+    <script>
+        var baseUrl = '/admins/cauhois/deleteAll';
+        var activeUrl = '/admins/cauhois/IsActive';
+    </script>
+}
+@* style>
+    td,th{
+        text-align:center
+    }
+</style> *@

@@ -1,0 +1,80 @@
+﻿@model Historyexams.Models.Taikhoan;
+@{
+	
+	
+}
+<header class="site-header d-flex flex-column justify-content-center align-items-center" style="padding: 80px;">
+	<div class="container">
+		<div class="row align-items-center">
+
+			@* <div class="col-lg-5 col-12"> *@
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						@* <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Homepage</a></li> *@
+
+						<li class="breadcrumb-item active" aria-current="page">Tài khoản</li>
+					</ol>
+				</nav>
+			@* </div> *@
+		</div>
+	</div>
+</header>
+
+<section class="container">
+	<div class="col-lg-6 col-6">
+		<form asp-action="Edit" asp-controller="Profile"  method="post" asp-route-id="@Model.Id" class="custom-form contact-form" role="form">
+			<div class="row">
+				@* <input type="hidden" asp-for="@Model.Id" /> *@
+				<div class="col-lg-6 col-md-6 col-12">
+					<div class="form-floating">
+						<input type="text" value="@Model.Hoten" name="Hoten" id="Hoten" class="form-control" placeholder="Name" required="">
+
+						<label for="floatingInput">Họ tên</label>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-12">
+					<div class="form-floating">
+						<input type="text" value="@Model.Dienthoai" name="Dienthoai" id="Dienthoai" class="form-control" placeholder="" required="">
+
+						<label for="floatingInput">Số điện thoại</label>
+					</div>
+
+
+				</div>
+				<div class="col-lg-7 col-md-7 col-12">
+					<div class="form-floating">
+						<input type="email"value="@Model.Email" name="Email" id="Email" class="form-control" placeholder="Email " required="">
+
+						<label for="floatingInput">Email </label>
+					</div>
+				</div>
+				<div class="col-lg-5 col-md-5 col-12">
+					<div class="form-floating">
+						<input type="text" value="@Model.Gioitinh" name="Gioitinh" id="Gioitinh" class="form-control" placeholder="Name" required="">
+
+						<label for="floatingInput">Giới tính</label>
+					</div>
+				</div>
+				<div class="col-lg-12 col-12">
+					<div class="form-floating">
+						<input type="text" value="@Model.Diachi" name="Diachi" id="Diachi" class="form-control" placeholder="" required="">
+
+						<label for="floatingInput">Địa chỉ</label>
+					</div>
+
+
+				</div>
+				<div class="col-lg-4 col-12 ms-auto">
+					<button type="submit" class="form-control">Lưu</button>
+				</div>
+
+			</div>
+		</form>
+	</div>
+</section>
+
+<style>
+	.col-lg-6.col-6 {
+		transform: translate(50%, 50px);
+	}
+</style>

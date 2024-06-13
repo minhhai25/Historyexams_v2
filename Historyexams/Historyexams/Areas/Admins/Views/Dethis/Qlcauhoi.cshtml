@@ -1,0 +1,180 @@
+﻿@model Historyexams.Models.Dethi
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+	var errorMessage = TempData["ErrorMessage"] as String;
+
+}
+
+
+<div class="container">
+	<div class="row">
+
+		<h3>Đề thi</h3>
+
+
+	</div>
+
+	<div class="row">
+		<div class="col-md-3 col-sm-6 col-12">
+			<div class="info-box">
+
+
+				<div class="info-box-content">
+					<span class="info-box-text">Mã đề</span>
+					@Html.DisplayFor(model => model.Madethi)
+				</div>
+				<!-- /.info-box-content -->
+			</div>
+			<!-- /.info-box -->
+		</div>
+		<!-- /.col -->
+		<div class="col-md-3 col-sm-6 col-12">
+			<div class="info-box">
+
+
+				<div class="info-box-content">
+					<span class="info-box-text">Tên đề</span>
+					@Html.DisplayFor(model => model.Tendethi)
+				</div>
+				<!-- /.info-box-content -->
+			</div>
+			<!-- /.info-box -->
+		</div>
+		<!-- /.col -->
+		<div class="col-md-3 col-sm-6 col-12">
+			<div class="info-box">
+
+
+				<div class="info-box-content">
+					<span class="info-box-text">Thời gian</span>
+					@Html.DisplayFor(model => model.Thoigian)
+				</div>
+				<!-- /.info-box-content -->
+			</div>
+			<!-- /.info-box -->
+		</div>
+		<!-- /.col -->
+		<div class="col-md-3 col-sm-6 col-12">
+			<div class="info-box">
+
+
+				<div class="info-box-content">
+					<span class="info-box-text">Số câu hỏi</span>
+					@Html.DisplayFor(model => model.Socauhoi)
+				</div>
+				<!-- /.info-box-content -->
+			</div>
+			<!-- /.info-box -->
+		</div>
+		<!-- /.col -->
+	</div>
+</div>
+<div class="container">
+	<div class="card">
+		<div class="card-header card-header-between">
+			<h3 class="card-title">Danh sách câu hỏi</h3>
+			<a class="btn btn-danger float-right ml-1" onclick="confirmDeletion('@Url.Action("XoaCHDT", new { id = Model.Id })')">Xóa</a>
+			<a asp-action="ThemCHVaoDeThi" asp-route-id="@Model.Id" asp-route-Idmon="@Model.Idchuong" asp-route-Idmd="@Model.Idmucdo" class="btn btn-primary float-right"> Thêm câu hỏi</a>
+			<a asp-action="SinhCH" asp-route-id="@Model.Id" asp-route-idMon="@Model.Idchuong" asp-route-idMd="@Model.Idmucdo" class="btn btn-success float-right mr-1">Sinh ngẫu nhiên</a>
+		</div>
+		<!-- /.card-header -->
+		<div class="card-body">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th style="width: 10px">Chọn</th>
+						<th>Mã câu hỏi</th>
+						<th>Câu hỏi</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var cauhoi in ViewBag.DanhSachCauHoi)
+					{
+						var id = "checkbox_" + cauhoi.Id;
+						<tr onclick="toggleCheckbox(this)">
+							<td class="valueId"><input type="checkbox" id="@id" class=" cbkItem" value="@cauhoi.Id" /></td>
+							<td>@cauhoi.Macauhoi</td>
+							<td>@cauhoi.Noidung</td>
+							<td><a class="btnDelete" asp-action="Xoacauhoi" asp-route-deThiId="@Model.Id" asp-route-id="@cauhoi.Id">Xóa</a></td>
+						</tr>
+					}
+				</tbody>
+
+			</table>
+		</div>
+		<!-- /.card-body -->
+
+	</div>
+
+</div>
+@section Scripts {
+	<script>
+		$(document).ready(function () {
+			// console.log("oke");
+			$('body').on('click', '.btnDelete', function (e) {
+
+				e.preventDefault();
+
+				var confirmation = confirm("Bạn có chắc chắn muốn xóa câu hỏi này không?");
+				var deleteUrl = $(this).attr('href'); // Lấy URL xóa từ thuộc tính href của nút xóa
+				if (confirmation) {
+
+					$.ajax({
+						url: deleteUrl,
+
+						type: 'POST',
+						success: function (response) {
+							if (response.success) {
+								// Xóa hàng từ bảng
+								$(e.target).closest('tr').remove();
+								alert("Câu hỏi đã được xóa thành công.");
+							} else {
+								alert("Đã xảy ra lỗi khi xóa câu hỏi.");
+							}
+						},
+						error: function () {
+							alert("Đã xảy ra lỗi khi xóa câu hỏi.");
+						}
+					});
+				}
+			});
+		});
+
+		function toggleCheckbox(element) {
+			var checkbox = element.querySelector('input[type="checkbox"]');
+			if (checkbox) {
+				checkbox.checked = !checkbox.checked;
+			}
+		}
+		function confirmDeletion(url) {
+			Swal.fire({
+				title: "Bạn có chắc chắn?",
+				text: "Bạn sẽ không thể khôi phục lại điều này!",
+				icon: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#3085d6",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "Vâng, xóa nó!",
+				cancelButtonText: "Không",
+			}).then((result) => {
+				if (result.isConfirmed) {
+					window.location.href = url;
+				}
+			});
+		}
+		@if (!string.IsNullOrEmpty(errorMessage))
+		{
+			<text>
+
+				Swal.fire({
+					title: "Ôi không...",
+					text: "@Html.Raw(errorMessage)",
+					icon: "error",
+				});
+			</text>
+		}
+
+
+	</script>
+}

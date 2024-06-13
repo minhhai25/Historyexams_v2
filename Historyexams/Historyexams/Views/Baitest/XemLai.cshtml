@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Historyexams.ModelViews.LichsuThiViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<header class="site-header d-flex flex-column justify-content-center align-items-center" style=" padding:40px">
+</header>
+<section class="col-md-12 m-2" style="">
+    <a class="btn btn-secondary" href="javascript:history.go(-1);">Thoát</a>
+	@{
+		var i = 1;
+		@foreach (var item in Model)
+		{
+            <div class="container">
+                <div>
+                    <h6>Câu @(i++)</h6>
+                    <p>@item.Noidung</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" value="A" type="radio" name="Pa[@item.idde]_@i" id="Pa1[@item.idde]" @(item.PaChon!=null && item.PaChon.Trim() == "A" ? "checked" : "") disabled>
+                            <label class="form-check-label" for="Pa1[@item.idde]">
+                                A. @item.PaA
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="C" name="Pa[@item.idde]_@i" id="Pa2[@item.idde]" @(item.PaChon != null && item.PaChon.Trim() == "C" ? "checked" : "") disabled>
+                            <label class="form-check-label" for="Pa2[@item.idde]">
+                                C. @item.PaC
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="B" name="Pa[@item.idde]_@i" id="Pa3[@item.idde]" @(item.PaChon != null && item.PaChon.Trim() == "B" ? "checked" : "") disabled>
+                            <label class="form-check-label" for="Pa3[@item.idde]">
+                                B. @item.PaB
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="D" name="Pa[@item.idde]_@i" id="Pa4[@item.idde]" @(item.PaChon != null && item.PaChon.Trim() == "D" ? "checked" : "") disabled>
+                            <label class="form-check-label" for="Pa4[@item.idde]">
+                                D. @item.PaD
+                            </label>
+                        </div>
+                    </div>
+                    <p>Phương án đã chọn: @(item.PaChon ?? "không có")</p>
+                    <p>Phương án đúng: @item.PaDung</p>
+                </div>
+            </div>
+		}
+	}
+</section>
+<style>
+/* 	.sticky-wrapper {
+		display: none
+	} */
+
+    label.form-check-label {
+        opacity: unset !important;
+    }
+
+    p {
+        color: black !important;
+    }
+
+    label.form-check-label {
+        cursor: pointer;
+    }
+</style>

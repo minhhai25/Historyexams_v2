@@ -1,0 +1,128 @@
+﻿@model Historyexams.Models.Cauhoi
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Chi tiết </h1>
+<style>
+    h4 {
+        margin-left: 20px;
+        padding-top: 10px;
+    }
+
+    h1 {
+        padding-left: 5%;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    dl.row {
+        margin: 5px;
+        padding: 10px;
+    }
+
+    dt.col-sm-2, dd.col-sm-10 {
+        margin: 10px 0;
+    }
+
+    .container {
+        background: white;
+        border-radius: 20px;
+    }
+
+    .button {
+        margin-left: 6%;
+        margin-top: 15px;
+    }
+</style>
+<div class="container">
+    <h4>Câu hỏi</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Mã câu hỏi
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Macauhoi)
+        </dd>
+        <dt class = "col-sm-2">
+            Nội dung
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Noidung)
+        </dd>
+        <dt class = "col-sm-2">
+            Phương án A
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaA)
+        </dd>
+        <dt class = "col-sm-2">
+            Phương án B
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaB)
+        </dd>
+        <dt class = "col-sm-2">
+            Phương án C
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaC)
+        </dd>
+        <dt class = "col-sm-2">
+           Phương án D
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaD)
+        </dd>
+        <dt class = "col-sm-2">
+           Phương án đúng
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PaDung)
+        </dd>
+        <dt class = "col-sm-2">
+            Ngày tạo
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ngaytao)
+        </dd>
+        <dt class = "col-sm-2">
+            Người tạo
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nguoitao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Isactive)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Isactive)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Isdelete)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Isdelete)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdchuongNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdchuongNavigation.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdmucdoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdmucdoNavigation.Id)
+        </dd>
+    </dl>
+</div>
+<div class="button">
+    <a asp-action="Edit" class="btn btn-danger" asp-route-id="@Model.Id">Sửa</a>
+    <a asp-action="Index" class="btn btn-success">Quay lại</a>
+
+</div>
