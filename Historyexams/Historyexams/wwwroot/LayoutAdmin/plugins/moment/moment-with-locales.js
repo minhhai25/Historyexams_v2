@@ -109,7 +109,7 @@
             charsLeftOver: 0,
             nullInput: false,
             invalidEra: null,
-            invalidMonth: null,
+            invalIdchuongth: null,
             invalidFormat: false,
             userInvalidated: false,
             iso: false,
@@ -158,7 +158,7 @@
                     flags.overflow < 0 &&
                     !flags.empty &&
                     !flags.invalidEra &&
-                    !flags.invalidMonth &&
+                    !flags.invalIdchuongth &&
                     !flags.invalidWeekday &&
                     !flags.weekdayMismatch &&
                     !flags.nullInput &&
@@ -935,7 +935,7 @@
         if (month != null) {
             array[MONTH] = month;
         } else {
-            getParsingFlags(config).invalidMonth = input;
+            getParsingFlags(config).invalIdchuongth = input;
         }
     });
 

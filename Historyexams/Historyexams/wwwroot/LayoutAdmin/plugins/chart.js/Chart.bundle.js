@@ -14805,7 +14805,7 @@ var moment = createCommonjsModule(function (module, exports) {
             overflow        : -2,
             charsLeftOver   : 0,
             nullInput       : false,
-            invalidMonth    : null,
+            invalIdchuongth    : null,
             invalidFormat   : false,
             userInvalidated : false,
             iso             : false,
@@ -14850,7 +14850,7 @@ var moment = createCommonjsModule(function (module, exports) {
             var isNowValid = !isNaN(m._d.getTime()) &&
                 flags.overflow < 0 &&
                 !flags.empty &&
-                !flags.invalidMonth &&
+                !flags.invalIdchuongth &&
                 !flags.invalidWeekday &&
                 !flags.weekdayMismatch &&
                 !flags.nullInput &&
@@ -15626,7 +15626,7 @@ var moment = createCommonjsModule(function (module, exports) {
         if (month != null) {
             array[MONTH] = month;
         } else {
-            getParsingFlags(config).invalidMonth = input;
+            getParsingFlags(config).invalIdchuongth = input;
         }
     });
 

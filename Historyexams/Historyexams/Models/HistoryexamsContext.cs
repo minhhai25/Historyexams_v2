@@ -33,9 +33,9 @@ public partial class HistoryexamsContext : DbContext
 
     public virtual DbSet<Traloi> Tralois { get; set; }
 
-//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Server=DESKTOP-OOQJGOT\\SQLEXPRESS;Database=Historyexams;Trusted_Connection=True;MultipleActiveResultSets=True; TrustServerCertificate=True");
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-OOQJGOT\\SQLEXPRESS;Database=Historyexams;Trusted_Connection=True;MultipleActiveResultSets=True; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -197,7 +197,6 @@ public partial class HistoryexamsContext : DbContext
 
             entity.HasOne(d => d.IdmucdoNavigation).WithMany(p => p.Dethis)
                 .HasForeignKey(d => d.Idmucdo)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_DETHI_MUCDO");
         });
 

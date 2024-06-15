@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Historyexams")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b16802724fdbac78b36e45bf3bd833e7824dc2f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Historyexams")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Historyexams")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

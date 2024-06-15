@@ -68,14 +68,15 @@
 		</div>
 		<!-- /.col -->
 	</div>
+
 </div>
 <div class="container">
 	<div class="card">
 		<div class="card-header card-header-between">
 			<h3 class="card-title">Danh sách câu hỏi</h3>
 			<a class="btn btn-danger float-right ml-1" onclick="confirmDeletion('@Url.Action("XoaCHDT", new { id = Model.Id })')">Xóa</a>
-			<a asp-action="ThemCHVaoDeThi" asp-route-id="@Model.Id" asp-route-Idmon="@Model.Idchuong" asp-route-Idmd="@Model.Idmucdo" class="btn btn-primary float-right"> Thêm câu hỏi</a>
-			<a asp-action="SinhCH" asp-route-id="@Model.Id" asp-route-idMon="@Model.Idchuong" asp-route-idMd="@Model.Idmucdo" class="btn btn-success float-right mr-1">Sinh ngẫu nhiên</a>
+			<a asp-action="ThemCHVaoDeThi" asp-route-id="@Model.Id" asp-route-Idchuong="@Model.Idchuong" asp-route-Idmd="@Model.Idmucdo" class="btn btn-primary float-right"> Thêm câu hỏi</a>
+			<a asp-action="SinhCH" asp-route-id="@Model.Id" asp-route-Idchuong="@Model.Idchuong" asp-route-idMd="@Model.Idmucdo" class="btn btn-success float-right mr-1">Sinh ngẫu nhiên</a>
 		</div>
 		<!-- /.card-header -->
 		<div class="card-body">

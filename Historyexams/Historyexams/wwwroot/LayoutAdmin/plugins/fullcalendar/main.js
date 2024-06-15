@@ -12761,7 +12761,7 @@ var FullCalendar = (function (exports) {
     }(DateProfileGenerator));
 
     var dayGridPlugin = createPlugin({
-        initialView: 'dayGridMonth',
+        initialView: 'dayGrIdchuongth',
         views: {
             dayGrid: {
                 component: DayTableView,
@@ -12775,7 +12775,7 @@ var FullCalendar = (function (exports) {
                 type: 'dayGrid',
                 duration: { weeks: 1 },
             },
-            dayGridMonth: {
+            dayGrIdchuongth: {
                 type: 'dayGrid',
                 duration: { months: 1 },
                 monthMode: true,

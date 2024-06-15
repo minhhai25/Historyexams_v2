@@ -13,7 +13,7 @@ public partial class Dethi
 
     public string Mota { get; set; }
 
-    public int Idmucdo { get; set; }
+    public int? Idmucdo { get; set; }
 
     public int Idbaitest { get; set; }
 

@@ -25,7 +25,7 @@ namespace Historyexams.Areas.Admins.Controllers
         }
 
         // GET: Admins/Dethis
-        public IActionResult Index(int? Idmon,int? Idbaitest,int? Idmd)
+        public IActionResult Index(int? Idchuong,int? Idbaitest,int? Idmd)
         {
 			
 			
@@ -33,13 +33,13 @@ namespace Historyexams.Areas.Admins.Controllers
            
             ViewBag.Tenbaitest = new SelectList(_context.Baitests, "Id", "Tenbaitest",Idbaitest);
             ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd",Idmd);
-            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong", Idmon);
+            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong", Idchuong);
 
 
 			
 
-			if (Idmon>0 && Idbaitest>0&& Idmd>0 ) {
-                lstdethi = lstdethi.Where(x => x.Idchuong == Idmon && (Idbaitest == null || x.Idbaitest == Idbaitest) && (Idmd == null || x.Idmucdo == Idmd)).ToList();
+			if (Idchuong>0 || Idbaitest>0 || Idmd>0 ) {
+                lstdethi = lstdethi.Where(x => x.Idchuong == Idchuong && (Idbaitest == null || x.Idbaitest == Idbaitest) && (Idmd == null || x.Idmucdo == Idmd)).ToList();
             }
             return View(lstdethi);
         }
@@ -65,11 +65,11 @@ namespace Historyexams.Areas.Admins.Controllers
         }
 
         // GET: Admins/Dethis/Create
-        public IActionResult Create(int? Idmon, int? Idmd,int Idbaitest)
+        public IActionResult Create(int? Idchuong, int? Idmd,int Idbaitest)
         {
             ViewBag.Tenbaitest = new SelectList(_context.Baitests, "Id", "Tenbaitest",Idbaitest);
             ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd",Idmd);
-            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong",Idmon);
+            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong",Idchuong);
             return View();
         }
 
@@ -303,8 +303,8 @@ namespace Historyexams.Areas.Admins.Controllers
 
 		}
 
-		public async Task<IActionResult> Xoacauhoi(int id,int deThiId)
-        {
+		public async Task<IActionResult> Xoacauhoi(int id,int deThiId)  
+        {   
             try
             {
                
@@ -345,19 +345,28 @@ namespace Historyexams.Areas.Admins.Controllers
             return (_context.Dethis?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-
-        public IActionResult ThemCHVaoDeThi(int? id, int? Idmon, int? Idmd)
+        
+        public IActionResult ThemCHVaoDeThi(int? id, int? Idchuong, int? Idmd)
         {
-            //Idmon = Idmon ?? 0;
-            //Idmd = Idmd ?? 0;
-           
+			ViewBag.IdDethi = id;
+
+			if (!Idchuong.HasValue || !Idmd.HasValue || Idchuong == 0 || Idmd == 0)
+            {
+               
+                return RedirectToAction("ThemCHTH", new { id = id });
+            }
             var model = new List<CauHoiViewModel>();
             var dtch = _context.Dtches.Where(d=>d.Iddethi == id).Select(x=>x.Idcauhoi).ToList();
-
-            var cauhois = _context.Cauhois.Where(x => !_context.Dtches.Where(x => x.Iddethi == id).Select(x => x.Idcauhoi).Contains(x.Id)).ToList();
-			if (Idmd > 0 && Idmon > 0)
+			var soCauHoi = _context.Dethis.Where(x => x.Id == id).Select(x => x.Socauhoi).FirstOrDefault();
+			var cauhois = _context.Cauhois.Where(x => !_context.Dtches.Where(x => x.Iddethi == id).Select(x => x.Idcauhoi).Contains(x.Id)).ToList();
+			if (Idmd > 0 && Idchuong > 0)
 			{
-				cauhois = cauhois.Where(x => x.Idchuong == Idmon && x.Idmucdo == Idmd).ToList();
+				cauhois = cauhois.Where(x => x.Idchuong == Idchuong && x.Idmucdo == Idmd).ToList();
+			}
+			if (dtch.Count() >= soCauHoi)
+			{
+				TempData["ErrorMessage"] = "Đã có đủ câu hỏi ";
+				return RedirectToAction("Qlcauhoi", new { id = id });
 			}
 			foreach (var item in cauhois)
             {
@@ -374,13 +383,52 @@ namespace Historyexams.Areas.Admins.Controllers
             }
            
             var tenMD = _context.Mucdos.Where(x => x.Id == Idmd).FirstOrDefault();
-            var Tenchuong = _context.Chuongs.Where(x => x.Id == Idmon).FirstOrDefault();
-			ViewBag.Tenmd =tenMD.Tenmd;
-            ViewBag.Tenchuong =Tenchuong.Tenchuong;
-          
-            ViewBag.Idmucdo =  Idmd;
-            ViewBag.Idchuong = Idmon;
+            var Tenchuong = _context.Chuongs.Where(x => x.Id == Idchuong).FirstOrDefault();
+           
+                ViewBag.Tenmd = tenMD.Tenmd;
+                ViewBag.Tenchuong = Tenchuong.Tenchuong;
+
+                ViewBag.Idmucdo = Idmd;
+                ViewBag.Idchuong = Idchuong;
+              
+                return View(model);
+            
+            
+        }
+        public IActionResult ThemCHTH( int Idmd ,int Idchuong  , int id) {
 			ViewBag.IdDethi = id;
+			var model = new List<CauHoiViewModel>();
+			var dtch = _context.Dtches.Where(d => d.Iddethi == id).Select(x => x.Idcauhoi).ToList();
+
+			var lstCauHoi = _context.Cauhois.Include(x=>x.IdchuongNavigation).Include(y=>y.IdmucdoNavigation).ToList();
+            var soCauHoi = _context.Dethis.Where(x => x.Id == id).Select(x => x.Socauhoi).FirstOrDefault();
+            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd", Idmd);
+            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong", Idchuong);
+            var soCauThieu = soCauHoi - dtch.Count();
+            ViewBag.soCauThieu = soCauThieu;
+
+			if (Idchuong>0 || Idmd > 0)
+            {
+				lstCauHoi = lstCauHoi.Where(x => x.Idchuong == Idchuong || Idchuong==null  && (Idmd == null || x.Idmucdo == Idmd)).ToList();
+			}
+			if (dtch.Count() >= soCauHoi)
+			{
+				TempData["ErrorMessage"] = "Đã có đủ câu hỏi ";
+				return RedirectToAction("Qlcauhoi", new { id = id });
+			}
+				foreach (var item in lstCauHoi)
+			{
+				var cauhoi = new CauHoiViewModel
+				{
+					Id = item.Id,
+					Macauhoi = item.Macauhoi,
+					Noidung = item.Noidung,
+					IsChecked = false,
+					Idchuong = item.Idchuong,
+					Idmucdo = item.Idmucdo
+				};
+				model.Add(cauhoi);
+			}
 			return View(model);
         }
         [HttpPost]
@@ -410,19 +458,33 @@ namespace Historyexams.Areas.Admins.Controllers
 
                 throw;
             }
-            return View(model);
+            //return View(model);
         }
-        public IActionResult SinhCH(int? id , int idMon,int idMd)
+        public IActionResult SinhCH(int? id , int Idchuong,int idMd)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var dsCauHoi= _context.Cauhois.Where(x=>x.Idchuong== idMon && x.Idmucdo==idMd).ToList();
+            var dsCauHoi= _context.Cauhois.Where(x=>x.Idchuong== Idchuong && x.Idmucdo==idMd).ToList();
             var soCauHoi = _context.Dethis.Where(x => x.Id == id).Select(x=>x.Socauhoi).FirstOrDefault();
             var thoiGian = _context.Dethis.Where(x => x.Id == id).Select(x=>x.Thoigian).FirstOrDefault();
             var cauHoiDT = _context.Dtches.Count(x => x.Iddethi == id);
+            if (idMd!=null && Idchuong==null){
+                dsCauHoi = _context.Cauhois.Where(x =>  x.Idmucdo == idMd).ToList();
+            }
+            else
+            {
+               if (idMd == null && Idchuong != null) {
+					dsCauHoi = _context.Cauhois.Where(x => x.Idchuong == Idchuong).ToList();
+                }
+                else
+                {
+					dsCauHoi = _context.Cauhois.ToList();
+				}
+
+			}
             if (soCauHoi > dsCauHoi.Count)
             {
 				TempData["ErrorMessage"] = "Số lượng câu hỏi vượt quá số lượng yêu cầu";
@@ -433,7 +495,6 @@ namespace Historyexams.Areas.Admins.Controllers
                 //return BadRequest("Đã có đủ câu hỏi ");
                 TempData["ErrorMessage"] = "Đã có đủ câu hỏi ";
                 return RedirectToAction("Qlcauhoi", new { id = id });
-
 			}
 
             var random = new Random();

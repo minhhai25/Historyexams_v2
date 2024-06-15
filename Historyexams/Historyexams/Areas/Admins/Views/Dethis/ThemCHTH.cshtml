@@ -1,0 +1,138 @@
+﻿@model IList<Historyexams.ModelViews.CauHoiViewModel>
+
+@{
+	ViewData["Title"] = "ThemCHTH";
+	Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+	var errorMessage = TempData["ErrorMessage"] as String;
+}
+
+<section class="content">
+	<div class="card">
+		<div class="card-header">
+			<div class="row ">
+				<div class="col-md-8">
+					<form asp-controller="Dethis" asp-action="ThemCHTH" method="get" class="form-inline">
+						<div class="form-group " style="">
+							<select class="custom-select" id="Idchuong" name="Idchuong" style="min-width: 180px;" asp-items="ViewBag.Tenchuong">
+								<option value="0" disabled selected>Tên chương</option>
+							</select>
+
+							<select class="custom-select" id="Idmd" name="Idmd" style="min-width: 180px;" asp-items="ViewBag.Tenmd">
+								<option value="0" disabled selected>Mức độ</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-default mr-1">Lọc</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div>
+		<h5>Số câu còn thiếu:<span id="soCauThieu"> @ViewBag.soCauThieu</span></h5>
+		
+	</div>
+	<div class="row ">
+		
+		<form asp-controller="Dethis" asp-action="ThemCHVaoDeThi" method="post">
+
+			<input type="hidden" id="HiddenIdmd" name="Idmucdo" value="Idmucdo" />
+			<input type="hidden" id="HiddenIdchuong" name="Idchuong" value="Idchuong" />
+			<input type="hidden" name="idDethi" value="@ViewBag.IdDethi" />
+			<div class="card-body">
+				<table class="table table-bordered  ">
+					<thead>
+						<tr>
+							<th style="width: 10px">Chọn</th>
+							<th>Mã câu hỏi</th>
+							<th>Câu hỏi</th>
+
+
+						</tr>
+					</thead>
+					<tbody>
+						@if (Model != null && Model.Any())
+						{
+							@for (int i = 0; i < Model.Count(); i++)
+							{
+								<tr onclick="toggleCheckbox(this)">
+									<input type="hidden" name="idDethi" value="@ViewBag.IdDethi" />
+									<input type="hidden" asp-for="@Model[i].Id" />
+									<input type="hidden" asp-for="@Model[i].Macauhoi" />
+									<td><input type="checkbox" class="cbkItem" asp-for="@Model[i].IsChecked"  /></td>
+									<td>
+										@Model[i].Macauhoi
+									</td>
+									<td>
+										@Model[i].Noidung
+									</td>
+								</tr>
+
+							}
+						}
+					</tbody>
+				</table>
+				<button type="submit" class="btn btn-default mr-1">Lưu</button>
+				<a href="javascript:history.go(-1);">Quay lại</a>
+			</div>
+		</form>
+	</div>
+</section>
+
+<script>
+	function setHiddenInputs() {
+		document.getElementById("HiddenIdchuong").value = document.getElementById("Idchuong").value;
+		document.getElementById("HiddenIdmd").value = document.getElementById("Idmd").value;
+	};
+	function toggleCheckbox(element) {
+		var checkbox = element.querySelector('input[type="checkbox"]');
+		// console.log(checkbox)
+		console.log(element)
+		if (element.checked == undefined) {
+			checkbox.checked = !checkbox.checked;
+		}
+		
+	
+		let soCauThieu = parseInt(document.getElementById("soCauThieu").textContent);
+		capNhatSoLuong(checkbox, soCauThieu);
+	}
+	@if (!string.IsNullOrEmpty(errorMessage))
+	{
+		<text>
+
+			Swal.fire({
+				title: "Ôi không...",
+				text: "@Html.Raw(errorMessage)",
+				icon: "error",
+			});
+		</text>
+	}
+	// let soCauThieu = parseInt(document.getElementById("soCauThieu").innerText);
+	// function checkCount(checkbox) {
+	// 	console.log("oke");
+	// 	if (checkbox.checked) {
+	// 		if (soCauThieu > 0) {
+	// 			soCauThieu--;
+	// 		} else {
+	// 			checkbox.checked = false
+	// 		}
+	// 	} else {
+	// 		soCauThieu++;
+	// 	}
+	// 	document.getElementById("soCauThieu").innerText = soCauThieu;
+	// }
+
+		function capNhatSoLuong(checkbox, soCauThieu) {
+		if (checkbox.checked == true ) {
+			
+			if (soCauThieu > 0) {
+				soCauThieu--;
+			} else {
+				checkbox.checked = false;
+			}
+		} else  {
+			soCauThieu++;
+		}
+		document.getElementById("soCauThieu").innerText = soCauThieu;
+	}
+</script>									
