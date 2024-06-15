@@ -72,32 +72,6 @@ namespace Historyexams.Controllers
                 .Where(x => deThi.Select(y => y.Id).Contains(x.Id))
                 .Include(x => x.IdtaikhoanNavigation)
                 .ToList();
-            //var taiKhoanView= tkDt.Select(y=> new TaiKhoanViewModel
-            //{
-            //    Iddethi = y.Iddethi,
-            //    Idtaikhoan = y.Idtaikhoan,
-            //    Hoten = y.IdtaikhoanNavigation.Hoten,
-
-            //}
-            //).ToList();
-            //List < Traloi> cautraloi = new List<Traloi>();
-            //foreach (var traloi in danhSachCauHoi)
-            //{
-
-            //	var Iddtch = _context.Dtches.Where(x => x.Iddethi == id && x.Idcauhoi == traloi.Id).FirstOrDefault().Id;
-            //	var tl = new Traloi()
-            //	{
-            //		Iddtch = Iddtch,
-            //		PaChon = null,
-            //		PaDung = traloi.PaDung,
-            //		Lan = 1,
-            //		Ngaythi = DateTime.Now,
-            //	};
-
-            //	_context.Tralois.Add(tl);
-            //	_context.SaveChanges();
-            //}
-
             ViewBag.Thoigian = ttDethi.Thoigian;
             ViewBag.Socauhoi = ttDethi.Socauhoi;
             ViewBag.DanhSachCauHoi = danhSachCauHoi;
@@ -172,7 +146,7 @@ namespace Historyexams.Controllers
                 TempData["TyLe"] = soCauDung + "/" + tongSoCau;
                 _context.Tkdts.Update(tkdt);
                 _context.SaveChanges();
-                //return RedirectToAction("KetQua", new { tyLeDung = tyLeDung });
+              
 
                 return Json(new { success = true, message = "Các phương án đã được lưu thành công." });
 

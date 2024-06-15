@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AGnqwYvKUaOMhu3zIp9hQBRjzkkWdKc2aK1VZeCsV/7vQhLdRyLoa/GY1orzLbLk6VeEkGt4deWfTwrWBYgB0w==",
+  "dgSpecHash": "Bmu5NxXajFuGkWemmNiAPA19KOfSIeH7/Sh13MVx8WwnUEnxXQ5G4NjL8meBzIsAqkSAF32zXZlrgN9RUbqh0g==",
   "success": true,
-  "projectFilePath": "E:\\DATN\\DA\\Historyexams_v2\\Historyexams\\Historyexams.csproj",
+  "projectFilePath": "E:\\DATN\\DATNV2\\Historyexams\\Historyexams\\Historyexams.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Minh Hai\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Minh Hai\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

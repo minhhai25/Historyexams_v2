@@ -11,13 +11,13 @@ public partial class Traloi
 
     public string PaChon { get; set; }
 
-    public string PaDung { get; set; }
-
     public int? Lan { get; set; }
 
     public DateTime? Ngaythi { get; set; }
 
     public int? Tkdtid { get; set; }
+
+    public string PaDung { get; set; }
 
     public virtual Dtch IddtchNavigation { get; set; }
 

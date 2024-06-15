@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\DATN\\DA\\Historyexams_v2\\Historyexams\\Historyexams.csproj": {}
+    "E:\\DATN\\DATNV2\\Historyexams\\Historyexams\\Historyexams.csproj": {}
   },
   "projects": {
-    "E:\\DATN\\DA\\Historyexams_v2\\Historyexams\\Historyexams.csproj": {
+    "E:\\DATN\\DATNV2\\Historyexams\\Historyexams\\Historyexams.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\DATN\\DA\\Historyexams_v2\\Historyexams\\Historyexams.csproj",
+        "projectUniqueName": "E:\\DATN\\DATNV2\\Historyexams\\Historyexams\\Historyexams.csproj",
         "projectName": "Historyexams",
-        "projectPath": "E:\\DATN\\DA\\Historyexams_v2\\Historyexams\\Historyexams.csproj",
+        "projectPath": "E:\\DATN\\DATNV2\\Historyexams\\Historyexams\\Historyexams.csproj",
         "packagesPath": "C:\\Users\\Minh Hai\\.nuget\\packages\\",
-        "outputPath": "E:\\DATN\\DA\\Historyexams_v2\\Historyexams\\obj\\",
+        "outputPath": "E:\\DATN\\DATNV2\\Historyexams\\Historyexams\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Minh Hai\\AppData\\Roaming\\NuGet\\NuGet.Config",

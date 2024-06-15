@@ -52,7 +52,7 @@
                         <th>
                            Tên chương
                         </th>
-                        
+                        <th>Mô tả</th>
                         <th>
                            Ngày tạo
                         </th>
@@ -60,7 +60,7 @@
                           Người tạo
                         </th>
                         <th>
-                           IsActive
+                         Hiển thị
                         </th>
                         
                         <th class="btn-action">Chức năng</th>
@@ -82,7 +82,9 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Tenchuong)
                                 </td>
-
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mota)
+                                </td>
                                 <td>@string.Format("{0:dd/MM/yyy}", item.Ngaytao)</td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Nguoitao)

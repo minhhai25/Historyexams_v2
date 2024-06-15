@@ -9,303 +9,303 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Historyexams
 build_property.RootNamespace = Historyexams
-build_property.ProjectDir = E:\DATN\DA\Historyexams_v2\Historyexams\
+build_property.ProjectDir = E:\DATN\DATNV2\Historyexams\Historyexams\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\DATN\DA\Historyexams_v2\Historyexams
+build_property.MSBuildProjectDirectory = E:\DATN\DATNV2\Historyexams\Historyexams
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Baitests/Create.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Baitests/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXEJhaXRlc3RzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Baitests/Delete.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Baitests/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXEJhaXRlc3RzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Baitests/Details.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Baitests/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXEJhaXRlc3RzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Baitests/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Baitests/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXEJhaXRlc3RzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Baitests/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Baitests/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXEJhaXRlc3RzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Cauhois/Create.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Cauhois/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENhdWhvaXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Cauhois/Delete.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Cauhois/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENhdWhvaXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Cauhois/Details.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Cauhois/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENhdWhvaXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Cauhois/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Cauhois/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENhdWhvaXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Cauhois/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Cauhois/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENhdWhvaXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Chuongs/Create.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Chuongs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENodW9uZ3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Chuongs/Delete.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Chuongs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENodW9uZ3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Chuongs/Details.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Chuongs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENodW9uZ3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Chuongs/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Chuongs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENodW9uZ3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Chuongs/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Chuongs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXENodW9uZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dethis/Create.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dethis/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXERldGhpc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dethis/Delete.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dethis/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXERldGhpc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dethis/Details.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dethis/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXERldGhpc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dethis/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dethis/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXERldGhpc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dethis/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dethis/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXERldGhpc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dethis/Qlcauhoi.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dethis/Qlcauhoi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXERldGhpc1xRbGNhdWhvaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dethis/ThemCHVaoDeThi.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dethis/ThemCHVaoDeThi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXERldGhpc1xUaGVtQ0hWYW9EZVRoaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dtches/Create.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dtches/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXER0Y2hlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dtches/Delete.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dtches/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXER0Y2hlc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dtches/Details.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dtches/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXER0Y2hlc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dtches/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dtches/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXER0Y2hlc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Dtches/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Dtches/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXER0Y2hlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Home/ThongKe.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Home/ThongKe.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXEhvbWVcVGhvbmdLZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Login/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXExvZ2luXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Login/Register.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Login/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXExvZ2luXFJlZ2lzdGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Mucdoes/Create.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Mucdoes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXE11Y2RvZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Mucdoes/Delete.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Mucdoes/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXE11Y2RvZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Mucdoes/Details.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Mucdoes/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXE11Y2RvZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Mucdoes/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Mucdoes/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXE11Y2RvZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Mucdoes/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Mucdoes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXE11Y2RvZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Shared/Danhmuc.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Shared/Danhmuc.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFNoYXJlZFxEYW5obXVjLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Shared/Error.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFNoYXJlZFxFcnJvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFNoYXJlZFxfTGF5b3V0QWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Taikhoans/Create.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Taikhoans/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRhaWtob2Fuc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Taikhoans/Delete.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Taikhoans/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRhaWtob2Fuc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Taikhoans/Details.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Taikhoans/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRhaWtob2Fuc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Taikhoans/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Taikhoans/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRhaWtob2Fuc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Taikhoans/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Taikhoans/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRhaWtob2Fuc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tkdts/Create.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tkdts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRrZHRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tkdts/Delete.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tkdts/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRrZHRzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tkdts/Details.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tkdts/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRrZHRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tkdts/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tkdts/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRrZHRzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tkdts/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tkdts/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRrZHRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tralois/Create.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tralois/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRyYWxvaXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tralois/Delete.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tralois/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRyYWxvaXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tralois/Details.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tralois/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRyYWxvaXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tralois/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tralois/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRyYWxvaXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/Tralois/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/Tralois/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXFRyYWxvaXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/_ViewImports.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Areas/Admins/Views/_ViewStart.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Areas/Admins/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5zXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Baitest/ChonDeThi - Copy.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Baitest/ChonDeThi - Copy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdGVzdFxDaG9uRGVUaGkgLSBDb3B5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Baitest/ChonDeThi.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Baitest/ChonDeThi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdGVzdFxDaG9uRGVUaGkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Baitest/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Baitest/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdGVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Baitest/KetQua.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Baitest/KetQua.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdGVzdFxLZXRRdWEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Baitest/LamBaiThi.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Baitest/LamBaiThi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdGVzdFxMYW1CYWlUaGkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Baitest/XemLai.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Baitest/XemLai.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFpdGVzdFxYZW1MYWkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Home/Index.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Home/Privacy.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Login/Login.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Login/Register.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Login/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Profile/Edit.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Profile/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Shared/Error.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/_ViewImports.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/_ViewStart.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/DATN/DA/Historyexams_v2/Historyexams/Views/Shared/_Layout.cshtml]
+[E:/DATN/DATNV2/Historyexams/Historyexams/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-v5r98qj0w7
