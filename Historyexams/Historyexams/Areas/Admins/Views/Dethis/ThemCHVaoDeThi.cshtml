@@ -6,33 +6,36 @@
 
 
 <div class="row pt-4 pl-5">
-	
 
-		<div class="col-md-3 col-sm-6 col-12">
-			<div class="info-box">
-				<div class="info-box-content">
-					<span class="info-box-text">Mức độ</span>
-					<p>@ViewBag.Tenmd</p>
-					
-				</div>
-				
+
+	<div class="col-md-3 col-sm-6 col-12">
+		<div class="info-box">
+			<div class="info-box-content">
+				<span class="info-box-text">Mức độ</span>
+				<p>@ViewBag.Tenmd</p>
+
 			</div>
-			
+
 		</div>
-		<div class="col-md-3 col-sm-6 col-12">
-			<div class="info-box">
-				<div class="info-box-content">
-					<span class="info-box-text">chương</span>
-					<p>@ViewBag.Tenchuong</p>
-					
-				</div>
-				
-			</div>
-			
-		</div>
+
 	</div>
+	<div class="col-md-3 col-sm-6 col-12">
+		<div class="info-box">
+			<div class="info-box-content">
+				<span class="info-box-text">chương</span>
+				<p>@ViewBag.Tenchuong</p>
 
+			</div>
 
+		</div>
+
+	</div>
+</div>
+
+<div>
+	<h5>Số câu còn thiếu:<span id="soCauThieu"> @ViewBag.soCauThieu</span></h5>
+
+</div>
 <div class="row pt-4 pl-4">
 	<form asp-controller="Dethis" asp-action="ThemCHVaoDeThi" method="post">
 
@@ -49,7 +52,7 @@
 						<th style="width: 10px">Chọn</th>
 						<th>Mã câu hỏi</th>
 						<th>Câu hỏi</th>
-						
+
 
 					</tr>
 				</thead>
@@ -92,8 +95,27 @@
 <script>
 	function toggleCheckbox(element) {
 		var checkbox = element.querySelector('input[type="checkbox"]');
-		if (checkbox) {
+
+		console.log(element)
+		if (element.checked == undefined) {
 			checkbox.checked = !checkbox.checked;
 		}
+
+
+		let soCauThieu = parseInt(document.getElementById("soCauThieu").textContent);
+		capNhatSoLuong(checkbox, soCauThieu);
+	}
+	function capNhatSoLuong(checkbox, soCauThieu) {
+		if (checkbox.checked == true) {
+
+			if (soCauThieu > 0) {
+				soCauThieu--;
+			} else {
+				checkbox.checked = false;
+			}
+		} else {
+			soCauThieu++;
+		}
+		document.getElementById("soCauThieu").innerText = soCauThieu;
 	}
 </script>

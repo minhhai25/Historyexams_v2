@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Delete</h1>
+@* <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -68,3 +68,79 @@
         <a asp-action="Index">Back to List</a>
     </form>
 </div>
+ *@
+<h1 style="margin-left:10px;">Xóa bài test</h1>
+
+<h3 style="margin-left:10px;">Bạn có chắc chán muốn xóa không</h3>
+
+<section class="content">
+    <div class="card">
+
+
+        <div class="bs-stepper-content card-body">
+            @using (Html.BeginForm("Delete", "Baitests", FormMethod.Post, new { }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false)
+
+                <div id="logins-part" class="content active dstepper-block" role="tabpanel" aria-labelledby="logins-part-trigger">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Ngaytao" />
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="">Mã bài test</label>
+                            @Html.TextBoxFor(x => x.Mabaitest, new { @class = "form-control", @plachilder = "Tên danh mục" })
+                            @Html.ValidationMessageFor(x => x.Mabaitest, null, new { @class = "text-danger" })
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Tên bài test</label>
+                        @Html.TextAreaFor(x => x.Tenbaitest, new { @class = "form-control" })
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="">Mô tả</label>
+                            @Html.TextAreaFor(x => x.Mota, new { @class = "form-control" })
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="">IDuser</label>
+                            @Html.TextAreaFor(x => x.Iduser, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="">Ngày tạo</label>
+                            @Html.TextAreaFor(x => x.Ngaytao, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Người tạo</label>
+                            @Html.TextAreaFor(x => x.Nguoitao, new { @class = "form-control" })
+                        </div>
+                    </div>
+                  
+
+                    <div class="form-group">
+                        <label for="">Hiển thị</label>
+                        @Html.CheckBoxFor(x => x.Isactive)
+                        @Html.ValidationMessageFor(x => x.Isactive, "", new { @class = "text-danger" })
+                    </div>
+
+
+                    <div class="form-group">
+                        <a asp-action="Index" class="btn btn-danger">Quay lại</a>
+                        <input type="submit" value=" Xóa" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+            <!-- /.card -->
+        </div>
+    </div>
+</section>

@@ -102,8 +102,8 @@ namespace Historyexams.Areas.Admins.Controllers
             {
                 return NotFound();
             }
-            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong");
-            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd");
+            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong",cauhoi.Idchuong);
+            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd",cauhoi.Idmucdo);
             return View(cauhoi);
         }
 
@@ -139,8 +139,8 @@ namespace Historyexams.Areas.Admins.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong");
-            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd");
+            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong",cauhoi.Idchuong);
+            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd",cauhoi.Idmucdo);
             return View(cauhoi);
         }
 

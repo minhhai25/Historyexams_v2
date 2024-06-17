@@ -36,12 +36,38 @@ namespace Historyexams.Areas.Admins.Controllers
             ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong", Idchuong);
 
 
-			
+            //if (Idchuong>0 || Idbaitest>0 || Idmd>0 ) {
+            //    lstdethi = lstdethi.Where(x => (x.Idchuong == Idchuong || x.Idchuong== null ) && ( x.Idbaitest == Idbaitest) && (x.Idmucdo == null || x.Idmucdo == Idmd)).ToList();
+            //}
+            if(Idchuong > 0 && Idbaitest > 0 && Idmd > 0)
+            {
+				lstdethi = lstdethi.Where(x => (x.Idchuong == Idchuong ) && (x.Idbaitest == Idbaitest) && ( x.Idmucdo == Idmd)).ToList();
+			}
+			else if (Idchuong > 0 && Idbaitest > 0 && Idmd == null)
+            {
+				lstdethi = lstdethi.Where(x => (x.Idchuong == Idchuong ) && (x.Idbaitest == Idbaitest)).ToList();
+			}
+			else if (Idchuong > 0 && Idbaitest == null && Idmd > 0)
+			{
+				lstdethi = lstdethi.Where(x => (x.Idchuong == Idchuong ) && ( x.Idmucdo == Idmd)).ToList();
+			}
+			else if (Idchuong == null && Idbaitest > 0 && Idmd > 0)
+			{
+				lstdethi = lstdethi.Where(x => (x.Idbaitest == Idbaitest) && (  x.Idmucdo == Idmd)).ToList();
+			}else if (Idchuong > 0 && Idbaitest == null && Idmd == null)
+			{
+				lstdethi = lstdethi.Where(x => (x.Idchuong == Idchuong )).ToList();
+			}
+			else if (Idchuong == null && Idbaitest > 0 && Idmd == null)
+			{
+				lstdethi = lstdethi.Where(x => (x.Idbaitest == Idbaitest)).ToList();
+			}
+			else if (Idchuong == null && Idbaitest == null && Idmd > 0)
+            { 			
+				lstdethi = lstdethi.Where(x => ( x.Idmucdo == Idmd)).ToList();
+			}
 
-			if (Idchuong>0 || Idbaitest>0 || Idmd>0 ) {
-                lstdethi = lstdethi.Where(x => x.Idchuong == Idchuong && (Idbaitest == null || x.Idbaitest == Idbaitest) && (Idmd == null || x.Idmucdo == Idmd)).ToList();
-            }
-            return View(lstdethi);
+			return View(lstdethi);
         }
         
         public async Task<IActionResult> Details(int? id)
@@ -118,9 +144,9 @@ namespace Historyexams.Areas.Admins.Controllers
             {
                 return NotFound();
             }
-            ViewBag.Tenbaitest = new SelectList(_context.Baitests, "Id", "Tenbaitest");
-            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd");
-            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong");
+            ViewBag.Tenbaitest = new SelectList(_context.Baitests, "Id", "Tenbaitest",dethi.Idbaitest);
+            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd",dethi.Idmucdo);
+            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong",dethi.Idchuong);
             return View(dethi);
         }
 
@@ -158,9 +184,9 @@ namespace Historyexams.Areas.Admins.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.Tenbaitest = new SelectList(_context.Baitests, "Id", "Tenbaitest");
-            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd");
-            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong");
+            ViewBag.Tenbaitest = new SelectList(_context.Baitests, "Id", "Tenbaitest", dethi.Idbaitest);
+            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd", dethi.Idmucdo);
+            ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong", dethi.Idchuong);
             return View(dethi);
         }
 
@@ -213,16 +239,27 @@ namespace Historyexams.Areas.Admins.Controllers
                 {
                     foreach (var item in items)
                     {
-                        var obj = _context.Dethis.Find(Convert.ToInt32(item));
-                        if(obj != null)
+                        //var obj = _context.Dethis.Find(Convert.ToInt32(item));
+                        var objs = _context.Dtches.Where(x=> x.Iddethi == Convert.ToInt32(item)).ToList();
+                        if (objs != null)
                         {
-                            var traLoi= _context.Tralois.Any(x=>x.Iddtch==obj.Id);
-                            if (traLoi)
+                            bool check = true;
+                            foreach (var obj in objs)
+                            {
+                                var traloi = _context.Tralois.Any(x => x.Iddtch == obj.Id);
+                                if (traloi)
+                                {
+                                    check = false;
+                                }
+                            }
+                            if (!check)
                             {
 								return Json(new { success = false });
 							}
                         }
-                        _context.Dethis.Remove(obj);
+                        var xoaDe= _context.Dethis.Find(Convert.ToInt32(item));
+                        _context.Dethis.Remove(xoaDe);
+                        _context.Dtches.RemoveRange(objs);
                         _context.SaveChanges();
                     }
                 }
@@ -353,12 +390,15 @@ namespace Historyexams.Areas.Admins.Controllers
 			if (!Idchuong.HasValue || !Idmd.HasValue || Idchuong == 0 || Idmd == 0)
             {
                
-                return RedirectToAction("ThemCHTH", new { id = id });
+                return RedirectToAction("ThemCHTH", new { id = id,Idchuong=Idchuong,Idmd=Idmd });
             }
             var model = new List<CauHoiViewModel>();
             var dtch = _context.Dtches.Where(d=>d.Iddethi == id).Select(x=>x.Idcauhoi).ToList();
 			var soCauHoi = _context.Dethis.Where(x => x.Id == id).Select(x => x.Socauhoi).FirstOrDefault();
-			var cauhois = _context.Cauhois.Where(x => !_context.Dtches.Where(x => x.Iddethi == id).Select(x => x.Idcauhoi).Contains(x.Id)).ToList();
+            var soCauThieu = soCauHoi - dtch.Count();
+            ViewBag.soCauThieu = soCauThieu;
+            //lấy tất cả câu hỏi khác các câu hỏi có trong đề thi câu hỏi
+            var cauhois = _context.Cauhois.Where(x => !_context.Dtches.Where(x => x.Iddethi == id).Select(x => x.Idcauhoi).Contains(x.Id)).ToList();
 			if (Idmd > 0 && Idchuong > 0)
 			{
 				cauhois = cauhois.Where(x => x.Idchuong == Idchuong && x.Idmucdo == Idmd).ToList();
@@ -395,14 +435,15 @@ namespace Historyexams.Areas.Admins.Controllers
             
             
         }
+      
         public IActionResult ThemCHTH( int Idmd ,int Idchuong  , int id) {
 			ViewBag.IdDethi = id;
 			var model = new List<CauHoiViewModel>();
 			var dtch = _context.Dtches.Where(d => d.Iddethi == id).Select(x => x.Idcauhoi).ToList();
-
-			var lstCauHoi = _context.Cauhois.Include(x=>x.IdchuongNavigation).Include(y=>y.IdmucdoNavigation).ToList();
+            //var cauhois = _context.Cauhois.Where(x => !_context.Dtches.Where(x => x.Iddethi == id).Select(x => x.Idcauhoi).Contains(x.Id)).ToList();
+            var lstCauHoi = _context.Cauhois.Where(x => !_context.Dtches.Where(x => x.Iddethi == id).Select(x => x.Idcauhoi).Contains(x.Id)).ToList();
             var soCauHoi = _context.Dethis.Where(x => x.Id == id).Select(x => x.Socauhoi).FirstOrDefault();
-            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd", Idmd);
+            ViewBag.Tenmd = new SelectList(_context.Mucdos, "Id", "Tenmd",Idmd);
             ViewBag.Tenchuong = new SelectList(_context.Chuongs, "Id", "Tenchuong", Idchuong);
             var soCauThieu = soCauHoi - dtch.Count();
             ViewBag.soCauThieu = soCauThieu;
@@ -474,17 +515,14 @@ namespace Historyexams.Areas.Admins.Controllers
             if (idMd!=null && Idchuong==null){
                 dsCauHoi = _context.Cauhois.Where(x =>  x.Idmucdo == idMd).ToList();
             }
+            else if (idMd == null && Idchuong != null)
+            {
+                dsCauHoi = _context.Cauhois.Where(x => x.Idchuong == Idchuong).ToList();
+            }
             else
             {
-               if (idMd == null && Idchuong != null) {
-					dsCauHoi = _context.Cauhois.Where(x => x.Idchuong == Idchuong).ToList();
-                }
-                else
-                {
-					dsCauHoi = _context.Cauhois.ToList();
-				}
-
-			}
+                dsCauHoi = _context.Cauhois.ToList();
+            }
             if (soCauHoi > dsCauHoi.Count)
             {
 				TempData["ErrorMessage"] = "Số lượng câu hỏi vượt quá số lượng yêu cầu";

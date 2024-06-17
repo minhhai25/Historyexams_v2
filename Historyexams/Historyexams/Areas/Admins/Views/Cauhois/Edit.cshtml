@@ -45,13 +45,17 @@
 
 
                         <div class="form-group col-md-4">
-                            <label class="control-label">Mức độ</label>
-                            <select class="form-control" asp-items="ViewBag.Tenmd"></select>
+                            <label for="">Mức độ</label>
+                            <select class="custom-select" id="Idmucdo" name="Idmucdo" style="min-width: 180px;" asp-items="ViewBag.Tenmd">
+                                <option value="" disabled selected>Mức độ</option>
+                            </select>
                         </div>
 
                         <div class="form-group col-md-4">
-                            <label class="control-label">chương</label>
-                            <select class="form-control" asp-items="ViewBag.Tenchuong"></select>
+                            <label for="">Chương</label>
+                            <select class="custom-select" id="Idchuong" name="Idchuong" style="min-width: 180px;" asp-items="ViewBag.Tenchuong">
+                                <option value="" disabled selected>Tên chương</option>
+                            </select>
                         </div>
                      </div>
 
