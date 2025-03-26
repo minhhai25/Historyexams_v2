@@ -10,7 +10,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản lý @ViewBag.Title  </h1>
+                <h1>Quản lý @ViewBag.Title</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -19,150 +19,92 @@
                 </ol>
             </div>
         </div>
-    </div><!-- /.container-fluid -->
+    </div>
 </section>
 
-<!-- Main content -->
 <section class="content">
-    <div class="card">
-        <div class="card-header">
-          
-            <div class="row card-tools">
-                <form action="" method="get" class="form-inline">
-                    <div class="form-group">
-                        <label class="sr-only" for="keyword">Tìm theo tên loại</label>
-                        <input class="form-control" name="title" id="keyword" placeholder="Nhập mã cần tìm" value="@ViewBag.keyword">
-                    </div>
-                    <button type="submit" class="btn btn-default mr-1"><i class="fas fa-search"></i></button>
-
-                </form>
-                <div>
-                    <a asp-action="Create" class="btn btn-primary">Thêm mới  </a>
-                    <a class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
-                </div>
-
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <span class="h5 mb-0">Danh sách câu hỏi</span>
+            <div>
+                <a asp-action="Create" class="btn btn-light"><i class="fas fa-plus"></i> Thêm mới</a>
+                <a class="btn btn-danger" id="BtnDeleteAll"><i class="fas fa-trash"></i> Xóa</a>
             </div>
         </div>
         <div class="card-body">
-            <table class="table table-hover table-bordered">
-                <thead>
-                    <tr>
+            <form action="" method="get" class="form-inline mb-3">
+                <input class="form-control mr-2" name="title" id="keyword" placeholder="Nhập mã cần tìm" value="@ViewBag.keyword">
+                <button type="submit" class="btn btn-outline-primary"><i class="fas fa-search"></i> Tìm kiếm</button>
+            </form>
 
-                        <th>
-                            Mã câu hỏi
-                        </th>
-                        <th>
-                           Nội dung
-                        </th>
-                        <th>
-                           Phương án A
-                        </th>
-                        <th>
-                            Phương án B
-                        </th>
-                        <th>
-                          Phương án C
-                        </th>
-                        <th>
-                           Phương án D
-                        </th>
-                        <th>
-                            Đáp án đúng
-                        </th>
-                       
-                        <th>
-                            IsActive
-                        </th>
-                        
-                        
-                        <th></th>
+            <table class="table table-hover table-bordered text-center">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Mã câu hỏi</th>
+                        <th>Nội dung</th>
+                        <th>Phương án A</th>
+                        <th>Phương án B</th>
+                        <th>Phương án C</th>
+                        <th>Phương án D</th>
+                        <th>Đáp án đúng</th>
+                        <th>Trạng thái</th>
+                        <th>Hành động</th>
+                        <th><input type="checkbox" id="selectAll"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @if (Model != null && Model.Any())
                     {
-
-                        var i = 1;
                         foreach (var item in Model)
                         {
-                            var strCheck = item.Isactive == true ? "<i class='fa fa-check text-success'></i>" :
-                            "<i class='fas fa-times text-danger'></i>"; //kiểm tra xem IsActicve là true hay false
-
-                            <tr id="trow_@item.Id">
-
+                            var strCheck = item.Isactive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Macauhoi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Noidung)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PaA)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PaB)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PaC)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PaD)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PaDung)</td>
+                                <td>@Html.Raw(strCheck)</td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Macauhoi)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Noidung)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PaA)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PaB)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PaC)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PaD)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PaDung)
-                                </td>
-                                @* <td>@string.Format("{0:dd/MM/yyy}", item.Ngaytao)</td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Nguoitao)
-                                </td> *@
-                                <td class="text-center">
-                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
-                                </td>
-                                
-                                
-                                <td class="btn-action " style="text-align:center; padding-top:20px">
-                                    <a id="edit" asp-action="Edit" asp-route-id="@item.Id">
-                                        <i class="fa-regular fa-pen-to-square"></i>
-                                    </a><br />
-                                    <a id="detail" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-info"></i></a><br />
-                                    <a id="delete" asp-action="Delete" asp-route-id="@item.Id"><i class="fa-regular fa-trash-can"></i></a>
-
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa fa-info-circle"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                 </td>
                                 <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
                             </tr>
-                            i++;
                         }
                     }
                     else
                     {
                         <tr>
-                            <td colspan="9">Không có bản ghi nào </td>
+                            <td colspan="10" class="text-center">Không có bản ghi nào</td>
                         </tr>
                     }
                 </tbody>
             </table>
 
-             <div class="clearfix" style="margin-top: 2rem;">
-            <ul class="pagination pagination-sm m-0 float-right">
-            @Html.PagedListPager(Model, page => Url.Action("index", new { page = page,title=ViewBag.keyword }), new PagedListRenderOptions
-            {
-            LiElementClasses = new string[] { "page-item" },
-            PageClasses = new string[] { "page-link" }
-            })
-            </ul>
+            <div class="clearfix mt-3">
+                <ul class="pagination pagination-sm m-0 float-right">
+                    @Html.PagedListPager(Model, page => Url.Action("index", new { page = page, title = ViewBag.keyword }), new PagedListRenderOptions
+               {
+                   LiElementClasses = new string[] { "page-item" },
+                   PageClasses = new string[] { "page-link" }
+               })
+                </ul>
             </div>
         </div>
     </div>
 </section>
+
 @section scripts {
     <script src="~/js/Checkbox.js"></script>
     <script>
-        var baseUrl = '/admins/cauhois/deleteAll';
-        var activeUrl = '/admins/cauhois/IsActive';
+        $(document).ready(function () {
+            $('#selectAll').click(function () {
+                $('.cbkItem').prop('checked', this.checked);
+            });
+        });
     </script>
 }
-@* style>
-    td,th{
-        text-align:center
-    }
-</style> *@

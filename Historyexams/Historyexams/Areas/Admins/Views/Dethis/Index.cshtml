@@ -1,154 +1,121 @@
 ﻿@model IEnumerable<Historyexams.Models.Dethi>
 
 @{
-	ViewData["Title"] = "Đề thi";
-	Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Đề thi";
+    Layout = "~/Areas/Admins/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <section class="content-header">
-	<div class="container-fluid">
-		<div class="row mb-2">
-			<div class="col-sm-6">
-				<h1>Quản lý @ViewBag.Title  </h1>
-			</div>
-			<div class="col-sm-6">
-				<ol class="breadcrumb float-sm-right">
-					<li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-					<li class="breadcrumb-item active">@ViewBag.Title</li>
-				</ol>
-			</div>
-		</div>
-	</div><!-- /.container-fluid -->
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Quản lý @ViewBag.Title</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </section>
+
 <section class="content">
-	<div class="card">
-		<div class="card-header">
-			<div class="row ">
-				<div class="col-md-8">
-					<form asp-controller="Dethis" asp-action="Index" method="get" class="form-inline">
-						<div class="form-group " style="">
-							<select class="custom-select" id="Idchuong" name="Idchuong" style="min-width: 180px;" asp-items="ViewBag.Tenchuong">
-								<option value="0" disabled selected>Tên chương</option>
-							</select>
-							<select class="custom-select" id="Idbaitest" name="Idbaitest" style="min-width: 180px;" asp-items="ViewBag.Tenbaitest">
-								<option value="0" disabled selected>Tên bài test</option>
-							</select>
-							<select class="custom-select" id="Idmd" name="Idmd" style="min-width: 180px;" asp-items="ViewBag.Tenmd">
-								<option value="0" disabled selected>Mức độ</option>
-							</select>
-						</div>
-						<button type="submit" class="btn btn-default mr-1">Lọc</button>
-					</form>
-				</div>
-				<div class="col-md-4 ">
-					<a asp-action="Create" class="btn btn-primary">Thêm mới  </a>
-					<a class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
-				</div>
-			</div>
-		</div>
-		<div class="card-body">
-			<table class="table table-hover table-bordered">
-				<thead>
-					<tr>
-						<th>
-							Mã đề
-						</th>
-						<th>
-							Tên đề thi
-						</th>
-						<th>
-							Mô tả
-						</th>
-						<th>
-							Thời gian
-						</th>
-						<th>
-							Số câu hỏi
-						</th>
-						<th>
-							Ngày tạo
-						</th>
-						<th>
-							@Html.DisplayNameFor(model => model.Isactive)
-						</th>
-
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					@if (Model != null && Model.Any())
-					{
-						var i = 1;
-						foreach (var item in Model)
-						{
-							var strCheck = item.Isactive == true ? "<i class='fa fa-check text-success'></i>" :
-							"<i class='fas fa-times text-danger'></i>"; //kiểm tra xem IsActicve là true hay false
-							<tr id="trow_@item.Id">
-
-								<td>
-									@Html.DisplayFor(modelItem => item.Madethi)
-								</td>
-								<td>
-									@Html.DisplayFor(modelItem => item.Tendethi)
-								</td>
-								<td>
-									@Html.DisplayFor(modelItem => item.Mota)
-								</td>
-								<td>
-									@Html.DisplayFor(modelItem => item.Thoigian)
-								</td>
-								<td>
-									@Html.DisplayFor(modelItem => item.Socauhoi)
-								</td>
-								<td>@string.Format("{0:dd/MM/yyy}", item.Ngaytao)</td>
-
-								<td class="text-center">
-									<a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
-								</td>
-								<td style="text-align:center">
-									<a asp-action="Edit" asp-route-id="@item.Id">
-										<i class="fa-regular fa-pen-to-square"></i>
-									</a>|
-									<a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-info"></i></a>
-									@* <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-regular fa-trash-can"></i></a> *@
-
-								</td>
-								<td>
-									<a asp-action="Qlcauhoi" asp-route-id="@item.Id">QLCH</a>
-
-
-								</td>
-								<td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
-							</tr>
-							i++;
-						}
-					}
-					else
-					{
-						<tr>
-							<td colspan="4">Không có bản ghi nào </td>
-						</tr>
-					}
-				</tbody>
-			</table>
-		</div>
-	</div>
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <form asp-controller="Dethis" asp-action="Index" method="get" class="form-inline">
+                <select class="custom-select mr-2" id="Idchuong" name="Idchuong" asp-items="ViewBag.Tenchuong">
+                    <option value="0" disabled selected>Tên chương</option>
+                </select>
+                <select class="custom-select mr-2" id="Idbaitest" name="Idbaitest" asp-items="ViewBag.Tenbaitest">
+                    <option value="0" disabled selected>Tên bài test</option>
+                </select>
+                <select class="custom-select mr-2" id="Idmd" name="Idmd" asp-items="ViewBag.Tenmd">
+                    <option value="0" disabled selected>Mức độ</option>
+                </select>
+                <button type="submit" class="btn btn-default">Lọc</button>
+            </form>
+            <div>
+                <a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+                <a class="btn btn-danger" id="BtnDeleteAll">Xóa</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAll" /></th>
+                        <th>Mã đề</th>
+                        <th>Tên đề thi</th>
+                        <th>Mô tả</th>
+                        <th>Thời gian</th>
+                        <th>Số câu hỏi</th>
+                        <th>Ngày tạo</th>
+                        <th>Trạng thái</th>
+                        <th>Chức năng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            var strCheck = item.Isactive ? "<i class='fa fa-check text-success'></i>" : "<i class='fas fa-times text-danger'></i>";
+                            <tr>
+                                <td><input type="checkbox" class="cbkItem" value="@item.Id" /></td>
+                                <td>@Html.DisplayFor(modelItem => item.Madethi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Tendethi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Mota)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Thoigian)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Socauhoi)</td>
+                                <td>@string.Format("{0:dd/MM/yyyy}", item.Ngaytao)</td>
+                                <td class="text-center">
+                                    <a href='#' data-id="@item.Id" class="btnActive">@Html.Raw(strCheck)</a>
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" title="Chỉnh sửa"><i class="fa fa-edit"></i></a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id" title="Xem chi tiết"><i class="fa fa-info-circle"></i></a> |
+                                    <a asp-action="Qlcauhoi" asp-route-id="@item.Id" title="Quản lý câu hỏi">QLCH</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="9">Không có bản ghi nào</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </section>
-@section Scripts {
-	<script src="~/js/Checkbox.js"></script>
-	<script>
-		var baseUrl = '/admins/dethis/deleteAll';
-		var activeUrl = '/admins/dethis/IsActive';
-	</script>
-}
-<style>
-	.col-md-4 {
-		display: flex;
-		justify-content: flex-end;
-	}
 
-	a.btn.btn-primary {
-		margin-right: 5px;
-	}
+@section Scripts {
+    <script src="~/js/Checkbox.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#selectAll').click(function () {
+                $('.cbkItem').prop('checked', this.checked);
+            });
+        });
+        var baseUrl = '/admins/dethis/deleteAll';
+        var activeUrl = '/admins/dethis/IsActive';
+    </script>
+}
+
+<style>
+    .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    a.btn {
+        margin-right: 5px;
+    }
 </style>
